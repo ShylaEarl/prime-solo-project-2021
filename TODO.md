@@ -15,8 +15,8 @@
 - [x] Create test data for all tables 
 
 ### Login 1.1 (T 5.25.21)
-- [] Authenticate and Authorize admin user 
-    - [] Test POST & GET routes in Postman
+- [x] Authenticate and Authorize admin user 
+    - [x] Test POST & GET routes in Postman
 - [] Grid-responsive page styling
 - [] Add A2O branding/style guide assets
 
