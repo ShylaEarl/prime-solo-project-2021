@@ -1,0 +1,94 @@
+:root {
+    --main-radius: 5px;
+    --main-padding: 5px;
+}
+  
+.practice-container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: .65fr 1.1166fr 1.1166fr 1.1166fr;
+    grid-template-rows: .75fr 1.375fr 1.375fr .5fr;
+    grid-template-areas: 
+      "header header header header"
+      "nav main main main"
+      "nav content1 content2 content3"
+      "nav footer footer footer";
+    grid-gap: .2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 12px;
+    /* this will be the main text color A2O brown matches header */
+    color: #5E3D18;
+    text-align: center;
+}
+  
+header {
+    background-color: #a7ffeb;
+    grid-area: header;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+#header-banner {
+    object-fit: contain;
+    height: 10rem;
+}
+  
+main {
+    background-color: #84ffff;
+    grid-area: main;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+nav {
+    background-color: #18ffff;
+    grid-area: nav;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+#content1 {
+    background-color: #6fffd2;
+    grid-area: content1;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+#content2 {
+    background-color: #64ffda;
+    grid-area: content2;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+#content3 {
+    background-color: #73ffba;
+    grid-area: content3;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+footer {
+    background-color: #73ffba;
+    grid-area: footer;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+/* mobile breakpoint is currently 550px but you can change that for stretch */
+@media only screen and (max-width: 550px) {
+    .practice-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: .5fr .5fr 2.2fr 1.3fr 1.3fr 1.3fr .5fr;
+      grid-template-areas: 
+        "header"
+        "nav"
+        "main"
+        "content1"
+        "content2"
+        "content3"
+        "footer";
+    }
+}

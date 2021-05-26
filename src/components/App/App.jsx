@@ -8,14 +8,14 @@ import {
 
 import { useDispatch } from 'react-redux';
 
-import Nav from '../Nav/Nav';
+//import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../AboutPage/AboutPage';
+//import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import AddNewClient from '../AddNewClient/AddNewClient';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -31,20 +31,33 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <Nav />
+      <div className="container">
+          {/* <header>
+            <img id="header-banner" rel="header-banner" 
+              src="Web-Header-C.png" 
+              alt="Acorn to Oak Herbal Header Banner"
+            />
+          </header>
+          <main>
+            <div >
+
+            </div>
+          </main>
+          <nav>SideNavBar</nav> */}
+
+        {/* <Nav /> */}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
+          {/* <Route
             // shows AboutPage at all times (logged in or not)
             exact
             path="/about"
           >
             <AboutPage />
-          </Route>
+          </Route> */}
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -63,7 +76,7 @@ function App() {
             exact
             path="/info"
           >
-            <InfoPage />
+            <AddNewClient />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
@@ -107,7 +120,7 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );
