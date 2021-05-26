@@ -28,12 +28,13 @@
 ### Add New Client 1.3 (T 5.25.21)
 - [x] add input feilds
 - [x] add buttons
-    - [] add submit functionality
+    - [x] add cancel functionality - routes to client table 1.2 (/user)
+    - [] add submit functionality - POST route
         - [] add client side input validation
         - [] add sweet alert to notify of successful POST
-    - [] add cancel functionality
-- [] write POST route
-    - [] test in Postman
+- [] write POST endpoint on sever
+    - [] add server side validation?
+    - [] test route in Postman
 - [] Grid-responsive page styling
 - [] Add A2O branding/style guide assets
 
