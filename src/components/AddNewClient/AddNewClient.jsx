@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './AddNewClient.css'
+import { shallowEqual } from 'react-redux';
 
 
 function addNewClient() {
@@ -24,7 +25,36 @@ function addNewClient() {
 
   //collects local state info, bundles it as an object and POSTs to DB
   const addNewClient = () => {
-    
+    if(full_name == ''){
+      swal({
+        text: 'You forgot to add the clients name!',
+        buttons: {
+          ok: true,
+        }
+      })
+    } else {
+      axios.post('/api/info', 
+        {
+          full_name: full_name,
+          address: address,
+          city: city,
+          state: state,
+          zip_code: zip_code,
+          phone: phone,
+          email: email,
+        }
+      ).then((response) => {
+        console.log('back from new client POST', response);
+        //swal success indicator
+
+        //clear input feilds
+
+        //route to client profile page (don't have /route yet)
+        //history.push('/');
+      }).catch((error) => {
+        console.log('error in new client POST', error);
+      });
+    }
   }//end addNewClient
 
   //clicking cancel btn routes back to Client Table (/user)
@@ -33,12 +63,12 @@ function addNewClient() {
   }//end goBack
   
   return (
-    <div className="addClient-container">
+    <div >
           
       {/* <div className="leaf-logo">
         <img src=" " alt="illustrated oak leaf"/>
       </div> */}
-      {/* Do you really want a form here? Just think about it? */}
+      
       <form id="client-form" onSubmit={addNewClient}>
         <h3>New Client Information</h3>
         <input placeholder="Client Name"
@@ -72,6 +102,7 @@ function addNewClient() {
         <input className="a2o-btn" type="submit" name="submit" value="Submit" />
         <button className="a2o-btn" onClick={goBack}>Cancel</button>
       </form>
+
       {/* <div>
         <img src=" " alt="illustrated oak leaf"/>
       </div> */}

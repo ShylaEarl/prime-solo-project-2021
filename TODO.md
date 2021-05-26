@@ -17,8 +17,8 @@
 ### App & Login 1.1 (T 5.25.21)
 - [x] source in sweet alert to index.html
 - [x] Grid-responsive page styling template in App moved to Practice.jsx/css
-    - [] base css grid for login page
-    - [] base css grid for login form
+    - [] base css for login page
+    - [] base css for login form
 - [x] Authenticate and Authorize admin user 
     - [x] Test POST & GET routes in Postman
 - [x] Add A2O branding/style guide assets
@@ -29,20 +29,21 @@
 - [x] add input feilds
 - [x] add buttons
     - [x] add cancel functionality - routes to client table 1.2 (/user)
-    - [] add submit functionality - POST route
+    - [x] add submit functionality - POST route
         - [] add client side input validation
         - [] add sweet alert to notify of successful POST
-- [] write POST endpoint on sever
+- [x] write POST endpoint on sever
     - [] add server side validation?
-    - [] test route in Postman
+    - [x] test route in Postman
+    - [x] route adding data to DB!
 - [] Grid-responsive page styling
-- [] Add A2O branding/style guide assets
 
-### CSS grid template/Responsive styling (worked on T 5.25.21 & )
-- [] header - created, but needs to be moved to component, or something!
-- [] navbar - figure this out!
+### CSS grid template/Responsive styling (worked on T 5.25.21 & W 5.26.21)
+- [x] header rendering from App across all views
+- [x] navbar rendering from App across all views
+    - [] create all links for nav
     - [] add 'Logout' link to nav
-- [] main - keep it simple sagitarius 
+- [x] main rendering from App across all views
 
 ### Client Table 1.2 (W 5.26.21)
 - [] write GET route w sql JOINS query
