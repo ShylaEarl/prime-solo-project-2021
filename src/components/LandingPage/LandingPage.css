@@ -1,80 +1,66 @@
-/* --------------------------------------------------------------------------------
-Grid
--------------------------------------------------------------------------------- */
-
-.grid {
-  display: flex;
-  flex: 0 1 auto;
-  /* defaults to 'row' */
-  flex-direction: row;
-  flex-wrap: wrap;
-  /* defaults to 'flex-start' */
-  justify-content: flex-start;
-  align-items: flex-start;
+:root {
+  --main-radius: 5px;
+  --main-padding: 5px;
 }
 
-.grid-col {
-  flex: 0 0 auto;
-  padding: 0 0.5rem 0.5rem;
-  box-sizing: border-box;
+.practice-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: .65fr 1.1166fr 1.1166fr 1.1166fr;
+  grid-template-rows: .75fr 1.083fr 1.083fr 1.083fr;
+  grid-template-areas: 
+    "header header header header"
+    "nav main main main"
+    "nav main main main"
+    "nav main main main";
+  grid-gap: .2rem;
+  font-family: 'Helvetica', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 16px;
+  /* this will be the main text color A2O brown matches header */
+  color: #5E3D18;
+  text-align: center;
 }
 
-.grid-col_1 {
-  flex-basis: 8.33333333%;
-  max-width: 8.33333333%;
+header {
+  background-color: #EBCF5B;
+  grid-area: header;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
 }
 
-.grid-col_2 {
-  flex-basis: 16.66666667%;
-  max-width: 16.66666667%;
+#header-banner {
+  object-fit: contain;
+  height: 10rem;
 }
 
-.grid-col_3 {
-  flex-basis: 25%;
-  max-width: 25%;
+main {
+  background-color: antiquewhite;
+  grid-area: main;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
 }
 
-.grid-col_4 {
-  flex-basis: 33.33333333%;
-  max-width: 33.33333333%;
+nav {
+  background-color: #F7903D;
+  grid-area: nav;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
 }
 
-.grid-col_5 {
-  flex-basis: 41.66666667%;
-  max-width: 41.66666667%;
-}
-
-.grid-col_6 {
-  flex-basis: 50%;
-  max-width: 50%;
-}
-
-.grid-col_7 {
-  flex-basis: 58.33333333%;
-  max-width: 58.33333333%;
-}
-
-.grid-col_8 {
-  flex-basis: 66.66666667%;
-  max-width: 66.66666667%;
-}
-
-.grid-col_9 {
-  flex-basis: 75%;
-  max-width: 75%;
-}
-
-.grid-col_10 {
-  flex-basis: 83.33333333%;
-  max-width: 83.33333333%;
-}
-
-.grid-col_11 {
-  flex-basis: 91.66666667%;
-  max-width: 91.66666667%;
-}
-
-.grid-col_12 {
-  flex-basis: 100%;
-  max-width: 100%;
+/* mobile breakpoint is currently 550px but you can change that for stretch */
+@media only screen and (max-width: 550px) {
+  .practice-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr .5fr 2.2fr 1.3fr 1.3fr 1.3fr .5fr;
+    grid-template-areas: 
+      "header"
+      "nav"
+      "main";
+      /* "content1"
+      "content2"
+      "content3"
+      "footer"; */
+  }
 }

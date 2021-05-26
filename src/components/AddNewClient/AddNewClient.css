@@ -1,0 +1,83 @@
+:root {
+    --main-radius: 5px;
+    --main-padding: 5px;
+}
+  
+.addClient-container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: .65fr 1.1166fr 1.1166fr 1.1166fr;
+    grid-template-rows: .75fr 1.083fr 1.083fr 1.083fr;
+    grid-template-areas: 
+      "header header header header"
+      "nav main main main"
+      "nav main main main"
+      "nav main main main";
+    grid-gap: .2rem;
+    font-family: 'Helvetica', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif';
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 16px;
+    /* this will be the main text color A2O brown matches header */
+    color: #5E3D18;
+    text-align: center;
+}
+  
+header {
+    background-color: #EBCF5B;
+    grid-area: header;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+#header-banner {
+    object-fit: contain;
+    height: 10rem;
+}
+  
+main {
+    background-color: antiquewhite;
+    grid-area: main;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+nav {
+    background-color: #F7903D;
+    grid-area: nav;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+  
+/* mobile breakpoint is currently 550px but you can change that for stretch */
+@media only screen and (max-width: 550px) {
+    .practice-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 6fr;
+      /* grid-template-rows: .5fr .5fr 2.2fr 1.3fr 1.3fr 1.3fr .5fr; */
+      grid-template-areas: 
+        "header"
+        "nav"
+        "main";
+        /* "content1"
+        "content2"
+        "content3"
+        "footer"; */
+    }
+}
+
+#client-form {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    border: 1px solid hotpink;
+    display: inline-block;
+    margin-left: 25rem;
+    margin-right: 25rem;
+    margin-top: 1rem;
+}
+
+.a2o-btn {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-bottom: 1rem;
+}
