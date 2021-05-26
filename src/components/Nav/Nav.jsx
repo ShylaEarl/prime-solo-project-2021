@@ -18,7 +18,7 @@ function Nav() {
   }
 
   return (
-    <div className="nav">
+    <nav>
       <Link to="/home">
         <h2 className="nav-title">Acorn to Oak Herbal</h2>
       </Link>
@@ -40,7 +40,7 @@ function Nav() {
           About
         </Link> */}
       </div>
-    </div>
+    </nav>
   );
 }
 

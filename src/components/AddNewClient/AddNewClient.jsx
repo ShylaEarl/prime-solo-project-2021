@@ -34,59 +34,48 @@ function addNewClient() {
   
   return (
     <div className="addClient-container">
-      {/* break header into component when you feel comfortable doing so */}
-      <header>
-            <img id="header-banner" rel="header-banner" 
-              src="Web-Header-C.png" 
-              alt="Acorn to Oak Herbal Header Banner"
-            />
-          </header>
-          <main>
-            {/* <div className="leaf-logo">
-              <img src=" " alt="illustrated oak leaf"/>
-            </div> */}
-            {/* Do you really want a form here? Just think about it? */}
-            <form id="client-form" onSubmit={addNewClient}>
-              <h3>New Client Information</h3>
-              <input placeholder="Client Name"
-                value={full_name}
-                onChange={(event) => setFullName(event.target.value)}
-              />
-              <input placeholder="Address"
-                value={address}
-                onChange={(event) => setAddress(event.target.value)}
-              />
-              <input placeholder="City"
-                value={city}
-                onChange={(event) => setCity(event.target.value)}
-              />
-              <input placeholder="State"
-                value={state}
-                onChange={(event) => setState(event.target.value)}
-              />
-              <input placeholder="Zip Code"
-                value={zip_code}
-                onChange={(event) => setZipCode(event.target.value)}
-              />
-              <input placeholder="Phone Number"
-                value={phone}
-                onChange={(event) => setPhone(event.target.value)}
-              />
-              <input placeholder="Email Address"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-              />
-              <input className="a2o-btn" type="submit" name="submit" value="Submit" />
-              <button className="a2o-btn" onClick={goBack}>Cancel</button>
-            </form>
-            {/* <div>
-              <img src=" " alt="illustrated oak leaf"/>
-            </div> */}
-          </main>
-          <nav>
-            {/* Add links here and break out into a component when you feel comfortable to do so */}
-            
-          </nav>
+          
+      {/* <div className="leaf-logo">
+        <img src=" " alt="illustrated oak leaf"/>
+      </div> */}
+      {/* Do you really want a form here? Just think about it? */}
+      <form id="client-form" onSubmit={addNewClient}>
+        <h3>New Client Information</h3>
+        <input placeholder="Client Name"
+          value={full_name}
+          onChange={(event) => setFullName(event.target.value)}
+        />
+        <input placeholder="Address"
+          value={address}
+          onChange={(event) => setAddress(event.target.value)}
+        />
+        <input placeholder="City"
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
+        />
+        <input placeholder="State"
+          value={state}
+          onChange={(event) => setState(event.target.value)}
+        />
+        <input placeholder="Zip Code"
+          value={zip_code}
+          onChange={(event) => setZipCode(event.target.value)}
+        />
+        <input placeholder="Phone Number"
+          value={phone}
+          onChange={(event) => setPhone(event.target.value)}
+        />
+        <input placeholder="Email Address"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        <input className="a2o-btn" type="submit" name="submit" value="Submit" />
+        <button className="a2o-btn" onClick={goBack}>Cancel</button>
+      </form>
+      {/* <div>
+        <img src=" " alt="illustrated oak leaf"/>
+      </div> */}
+          
     </div>
   );
 }

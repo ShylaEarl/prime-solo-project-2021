@@ -18,17 +18,12 @@ img {
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
-
-.container {
-  /* padding: 20px; */
-}
-
 :root {
   --main-radius: 5px;
   --main-padding: 5px;
 }
 
-.practice-container {
+.container {
   display: grid;
   height: 100vh;
   grid-template-columns: .65fr 1.1166fr 1.1166fr 1.1166fr;

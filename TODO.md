@@ -44,7 +44,7 @@
     - [] add 'Logout' link to nav
 - [] main - keep it simple sagitarius 
 
-### Client Table 1.3 (W 5.26.21)
+### Client Table 1.2 (W 5.26.21)
 - [] write GET route w sql JOINS query
 - [] design table
 - [] map client and appt info array to DOM/table

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './LandingPage.css';
+//import './LandingPage.css';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -13,20 +13,7 @@ function LandingPage() {
   };
 
   return (
-    <div className="practice-container">
-      
-      <header>
-            <img id="header-banner" rel="header-banner" 
-              src="Web-Header-C.png" 
-              alt="Acorn to Oak Herbal Header Banner"
-            />
-          </header>
-          <main>
-            <div >
-
-            </div>
-          </main>
-          <nav>SideNavBar</nav>
+    <div className="container">
 
       <h2>Hello Friends!</h2>
 
