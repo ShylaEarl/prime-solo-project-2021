@@ -5,9 +5,20 @@ const {
 const pool = require('../modules/pool');
 const router = express.Router();
 
-
+//get all clients (and appointments?) from the DB (for client table)
 router.get('/', (req, res) => {
-  // GET route code here
+  
+  //should this be a joins query to retrieve appt data too?
+  const query = `SELECT * FROM "client";`;
+  pool.query(query)
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(error => {
+    console.log('Error client GET', error);
+    res.sendStatus(500)
+  })
+
 });
 
 //POST route to add new client Should this be at '/info' or '/'?

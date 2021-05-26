@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './AddNewClient.css'
-import { shallowEqual } from 'react-redux';
-
 
 function addNewClient() {
 
@@ -27,7 +25,7 @@ function addNewClient() {
   const addNewClient = () => {
     if(full_name == ''){
       swal({
-        text: 'You forgot to add the clients name!',
+        text: 'You forgot to add your new clients name!',
         buttons: {
           ok: true,
         }
@@ -44,13 +42,19 @@ function addNewClient() {
           email: email,
         }
       ).then((response) => {
-        console.log('back from new client POST', response);
+        console.log('back from new client POST', response.data);
         //swal success indicator
 
         //clear input feilds
-
-        //route to client profile page (don't have /route yet)
-        //history.push('/');
+        setFullName('');
+        setAddress('');
+        setCity('');
+        setState('');
+        setZipCode('');
+        setPhone('');
+        setEmail('');
+        //route to client profile page TODO make '/client-profile' route/component
+        //history.push('/client-profile');
       }).catch((error) => {
         console.log('error in new client POST', error);
       });
@@ -112,36 +116,3 @@ function addNewClient() {
 }
 
 export default addNewClient;
-
-
-// //client side validation ensures there is a client name
-// if (full_name === '') {
-//   swal({
-//       text: 'You forgot to add a client name!',
-//       buttons: {
-//           ok: true,
-//       }
-//   })
-// } else {
-//   //sends new client data to DB
-//   axios.post('/api/client',
-//       {
-//           full_name: full_name,
-//           address: address,
-//           city: city,
-//           state: state,
-//           zip_code: zip_code,
-//           phone: phone,
-//           email: email,
-//       }
-//   ).then((response) => {
-//       console.log('back from POST', response)
-//       //swal success indicator
-
-//       //clear input feilds
-
-//       //route to client profile page
-//       //history.push('/');
-//   }).catch((error) => {
-//       console.log('in addNewClient POST', error)
-// });

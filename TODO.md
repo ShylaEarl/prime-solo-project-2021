@@ -30,7 +30,8 @@
 - [x] add buttons
     - [x] add cancel functionality - routes to client table 1.2 (/user)
     - [x] add submit functionality - POST route
-        - [] add client side input validation
+        - [x] add client side input validation
+        - [] alert user if input is not valid w sweet alert
         - [] add sweet alert to notify of successful POST
 - [x] write POST endpoint on sever
     - [] add server side validation?
