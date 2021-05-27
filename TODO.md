@@ -31,10 +31,10 @@
     - [x] add cancel functionality - routes to client table 1.2 (/user)
     - [x] add submit functionality - POST route
         - [x] add client side input validation
-        - [] alert user if input is not valid w sweet alert
+        - [x] alert user if input is not valid w sweet alert
         - [] add sweet alert to notify of successful POST
 - [x] write POST endpoint on sever
-    - [] add server side validation?
+    - [] add server side validation? only full_name is validated on client...
     - [x] test route in Postman
     - [x] route adding data to DB!
 - [] Grid-responsive page styling
@@ -43,13 +43,15 @@
 - [x] header rendering from App across all views
 - [x] navbar rendering from App across all views
     - [] create all links for nav
-    - [] add 'Logout' link to nav
+    - [] change 'Logout' button to link in nav
 - [x] main rendering from App across all views
 
 ### Client Table 1.2 (W 5.26.21)
-- [] write GET route w sql JOINS query
-- [] design table
-- [] map client and appt info array to DOM/table
+- [x] write GET route endpoint on server
+    - [x] with sql JOINS query
+- [x] create client saga & reducer
+- [x] create appointment saga & reducer
+- [x] map appt info array to DOM/table (currently also includes client data)
 - [] add 'Add Appt' button
     - [] add functionality - route to Add New Appointment page /new-appt
 - [] add 'Edit' button
@@ -60,9 +62,10 @@
         - [] add swal to double check on deletion
         - [] swal to notify that delete was successful
         - [] rerender DOM/remove table row
+- [] table css
 - [] navbar? This is the first view it appears in. 
 
-### Client Profile 1.4 (W 5.26.21)
+### Client Profile 1.4 (TH 5.27.21)
 - [] GET route to display client appointment history on DOM
     - [] add links and icons to rows if date is current/past
     - [] route to Appointment Notes page 1.6 if current
@@ -81,3 +84,13 @@
 ### Appointment Notes 1.6 (TH 5.27.21)
 
 ### Details Page 1.7 (TH 5.27.21)
+
+
+
+*** Code for adding date completed/current date timestamp, if needed ***
+Add the ability to record when a task was completed. Show the completed date on the frontend in a pretty format.
+
+We can do this directly in our SQL query, with the CURRENT_TIMESTAMP() function:
+
+INSERT INTO "tasks" ("name", "task", "date")
+VALUES ($1, $2, CURRENT_TIMESTAMP());

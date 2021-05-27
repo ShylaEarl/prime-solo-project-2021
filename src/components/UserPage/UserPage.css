@@ -1,4 +1,63 @@
 table {
+    background-color: ivory;
     border: 1px solid hotpink;
+    border-collapse: collapse;
+    /* border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px; */
     margin: auto;
 }
+
+table th{
+    border: 1px solid hotpink;
+    background-color: lightgrey;
+}
+
+table td{
+    border: 1px solid hotpink;
+    text-align: center;
+    padding: 1rem
+}
+
+/* rounds corners, but is only working in top row? */
+th:first-of-type {
+    border-top-left-radius: 10px;
+}
+
+th:last-of-type {
+    border-top-right-radius: 10px;
+}
+
+tr:last-of-type td:first-of-type {
+    border-bottom-left-radius: 10px;
+}
+
+tr:last-of-type td:last-of-type {
+    border-bottom-right-radius: 10px;
+}
+
+/* #task-table {
+    border: 1px solid #3d405b;
+    border-collapse: collapse;
+    margin: auto;
+    width: 70%
+}
+
+table th{
+    border: 2px solid #3d405b;
+    background-color: lightgrey;
+}
+
+table td{
+    border: 1px solid #3d405b;
+    text-align: center;
+    padding: 1rem
+} */
+
+tr:hover{
+    background-color: lightgrey;
+}
+
+/* tr:nth-child(even){
+    background-color: lightgrey;
+}  */
