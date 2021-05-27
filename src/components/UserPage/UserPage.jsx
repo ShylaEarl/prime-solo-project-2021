@@ -40,6 +40,7 @@ function UserPage() {
     .then((response) => {
       console.log('delete request', response);
       //get call replaced by useEffect
+      dispatch({ type: 'FETCH_APPT' }); 
     })
     .catch((error) => {
       console.log('error in DELETE', error);
