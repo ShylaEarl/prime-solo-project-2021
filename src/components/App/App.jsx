@@ -21,6 +21,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Profile from '../Profile/Profile';
 import AddNewAppt from '../AddNewAppt/AddNewAppt';
+import ApptNotes from '../ApptNotes/ApptNotes';
+import ApptDetails from '../ApptDetails/ApptDetails';
 
 import './App.css';
 
@@ -87,6 +89,20 @@ function App() {
             exact
             path="/AddAppt">
             <AddNewAppt />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ApptNotes page else shows LoginPage
+            exact
+            path="/ApptNotes">
+            <ApptNotes />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            //logged in shows ApptDetails page else shows LoginPage
+            exact
+            path="/ApptDetails">
+            <ApptDetails />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will

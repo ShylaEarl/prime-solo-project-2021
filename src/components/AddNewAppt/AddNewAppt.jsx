@@ -9,7 +9,7 @@ function AddNewAppt(){
     const history = useHistory();
 
     //instance of client redux store for name? or props?
-    const client = useSelector((store) => store.client);
+    //const client = useSelector((store) => store.client);
 
     //sets local state for post request
     const [appt_name, setApptName] = useState('');
@@ -31,7 +31,7 @@ function AddNewAppt(){
                 appt_name: appt_name,
                 date: date,
                 primary_concern: primary_concern,
-                id: 8,
+                id: 7,
             }
             ).then((response) => {
                 console.log('back from new appt POST', response.data);
@@ -60,24 +60,31 @@ function AddNewAppt(){
     return(
         <div>
             <form id="appt-form" onSubmit={addNewAppt}>
-                <h3>New Appointment Information</h3>
-                <p>{client.full_name}</p>
+                <h3>Adding New Appointment For:</h3>
+                {/* {JSON.stringify(client)} */}
+                <p>Willow Rosa Lee (redux - table row id)</p>
                 <input type="text"
                     placeholder="Appointment Name" 
                     value={appt_name}
                     onChange={(event) => setApptName(event.target.value)}
                 />
+                <br />
                 <input type="date"
                     placeholder="Appointment Date"
                     value={date}
                     onChange={(event) => setDate(event.target.value)}
                 />
+                <br />
                 <input type="text"
                     placeholder="Primary Concern"
                     value={primary_concern}
                     onChange={(event) => setPrimaryConcern(event.target.value)}
                 />
+                <br />
                 <input className="a2o-btn" type="submit" name="submit" value="Submit" />
+                <br />
+                <p>Clicking submit routes to Client Profile page</p>
+                <br />
                 <button className="a2o-btn" onClick={goBack}>Cancel</button>
             </form>
         </div>

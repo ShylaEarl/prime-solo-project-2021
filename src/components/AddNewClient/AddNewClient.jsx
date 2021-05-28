@@ -56,7 +56,7 @@ function addNewClient() {
         setZipCode('');
         setPhone('');
         setEmail('');
-        //route to client profile page TODO make '/client-profile' route/component
+        //route to client profile page 
         history.push('/Profile');
       }).catch((error) => {
         console.log('error in new client POST', error);

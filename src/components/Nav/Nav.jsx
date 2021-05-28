@@ -13,13 +13,13 @@ function Nav() {
   };
 
   if (user.id != null) {
-    loginLinkData.path = '/user'; // /user is the client table view and is called HOME in the nav bar
+    loginLinkData.path = '/user'; // /user is the client table view
     loginLinkData.text = 'Client Table';
   }
 
   return (
     <nav>
-      <Link to="/home">
+      <Link to='/home'>
         Home
       </Link>
       <br/>

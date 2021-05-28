@@ -5,12 +5,14 @@ const {
 const pool = require('../modules/pool');
 const router = express.Router();
 
+// `SELECT * FROM "appointment"
+//     JOIN "client" ON client.id=appointment.client_id;`
+
 //get all clients (and appointments?) from the DB (for client table)
 router.get('/', (req, res) => {
 
   //should this be a joins query to retrieve appt data too? `SELECT * FROM "client";`
-  const query = `SELECT * FROM "appointment"
-    JOIN "client" ON client.id=appointment.client_id;`;
+  const query = `SELECT * FROM "client";`;
   pool.query(query)
   .then(result => {
     res.send(result.rows);
@@ -45,9 +47,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 }); //end new client POST route
 
-//POST route to add new appointment
+//POST route to add new appointment ***May need to add :id here...
 router.post('/', rejectUnauthenticated, (req, res) => {
-  
+  //how do I capture the client id and add it to the query?
   const query = `INSERT INTO "appointment" ("appt_name", "date", "primary_concern", 
       "notes", "summary", "client_id") VALUES ($1, $2, $3, $4, $5, $6);`;
   pool.query(query, [req.body.appt_name, req.body.date, req.body.primary_concern, 
