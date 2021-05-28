@@ -130,24 +130,9 @@ Button
   cursor: pointer; */
 }
 
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
-}
-
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
-}
-
-.btn_sizeFull {
-  display: block;
-  width: 100%;
-}
-
 .btn:hover {
-  background-color: #008183;
-  text-decoration: none;
+  /* background-color: #008183;
+  text-decoration: none; */
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */

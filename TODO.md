@@ -32,7 +32,7 @@
     - [x] add submit functionality - POST route
         - [x] add client side input validation
         - [x] alert user if input is not valid w sweet alert
-        - [] add sweet alert to notify of successful POST
+        - [x] add sweet alert to notify of successful POST
 - [x] write POST endpoint on sever
     - [] add server side validation? only full_name is validated on client...
     - [x] test route in Postman
@@ -56,12 +56,12 @@
     - [] add functionality - route to Add New Appointment page /new-appt
 - [] add 'Edit' button
     - [] add functionality - route to Client Profile page /client-profile
-- [] add 'Delete' button
-    - [] add functionality
-        - [] write delete route
-        - [] add swal to double check on deletion
-        - [] swal to notify that delete was successful
-        - [] rerender DOM/remove table row
+- [x] add 'Delete' button
+    - [x] add functionality
+        - [x] write delete route endpoint on server
+        - [x] add swal to double check on deletion
+        - [x] swal to notify that delete was successful
+        - [x] rerender DOM/remove table row
 - [] table css
 - [] navbar? This is the first view it appears in. 
 
