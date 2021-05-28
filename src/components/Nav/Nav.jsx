@@ -13,25 +13,40 @@ function Nav() {
   };
 
   if (user.id != null) {
-    loginLinkData.path = '/user'; // /user is the client table view and is called HOME in the nav bar
+    loginLinkData.path = '/user'; // /user is the client table view
     loginLinkData.text = 'Client Table';
   }
 
   return (
     <nav>
-      <Link to="/home">
+      <Link to='/home'>
         Home
       </Link>
+      <br/>
       <div>
         <Link to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>
+        <br/>
 
         {user.id && (
           <>
+            <Link to=" ">
+              Client Bill of Rights
+            </Link>
+            <br/>
+            <Link to=" ">
+              Health History Form
+            </Link>
+            <br/>
+            <Link to=" ">
+              Aftercare Instruction Sheet
+            </Link>
+            <br/>
             <Link to="/info">
               Add New Client
             </Link>
+            <br/>
             <LogOutButton />
           </>
         )}

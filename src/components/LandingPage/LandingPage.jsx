@@ -27,15 +27,13 @@ function LandingPage() {
         the crew, we look forward to seeing you!
         </p>
 
-        <div className="formPanel">
+        {/* <div className="formPanel">
           <RegisterForm />
-
             <h4>Already a Member?</h4>
             <button className="btn_asLink" onClick={onLogin}>
               Login
             </button>
-
-        </div>
+        </div> */}
 
     </div>
   );

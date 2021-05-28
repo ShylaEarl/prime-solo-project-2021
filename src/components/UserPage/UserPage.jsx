@@ -1,12 +1,16 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './UserPage.css'
 
 function UserPage() {
+
+  //functionality to route to a page
+  const history = useHistory();
   
   //client store instance 
-  //const client = useSelector((store) => store.client);
+  const client = useSelector((store) => store.client);
   
   //appointment store instance currently holds all appt info and client info
   const appt = useSelector((store) => store.appt);
@@ -16,20 +20,21 @@ function UserPage() {
   
   //axios get (or useEffect dispatch to saga) to retrieve clients from DB
   useEffect(() => {
-    //dispatch({ type: 'FETCH_CLIENT' }); 
+    dispatch({ type: 'FETCH_CLIENT' }); 
     dispatch({ type: 'FETCH_APPT' }); 
   }, []);
 
   //addConsult function
   const addConsult = () => {
+    //need to add id param here from table row and send to AppAppt page w/ name too.
     console.log('add clicked!');
-    //routes to add new appointment page ('/' not created yet)
+    history.push('/AddAppt');
   }
 
   //editInfo function
   const editInfo = () => {
     console.log('edit clicked!');
-    //routes to client profile page ('/' not created yet)
+    history.push('/Profile');
   }
 
   //permanently deletes client from DB (Should this be moved to a saga?)
@@ -40,7 +45,7 @@ function UserPage() {
     .then((response) => {
       console.log('delete request', response);
       //get call replaced by useEffect
-      dispatch({ type: 'FETCH_APPT' }); 
+      dispatch({ type: 'FETCH_CLIENT' }); //should be FETCH_APPT when all is working
     })
     .catch((error) => {
       console.log('error in DELETE', error);
@@ -70,7 +75,7 @@ function UserPage() {
   return (
     <div >
       <h3>A2O Client Base</h3>
-      {/* {JSON.stringify(appt)} */}
+      {/* {JSON.stringify(client)}  should be appt rather than client when working*/}
       <table>
         <thead>
           <tr>
@@ -82,13 +87,14 @@ function UserPage() {
             <th>Delete Client</th>
           </tr>
         </thead>
+        {/* should be appt.map when all is working */}
         <tbody>
-          {appt.map((item, i) => 
+          {client.map((item, i) => 
             // does there need to be a return here?
             <tr key={i}>
               <td>{item.full_name}</td>
-              <td>{item.appt_name}</td>
-              <td>{item.date.slice(0, 10)}</td>
+              {/* <td>{item.appt_name}</td>
+              <td>{item.date.slice(0, 10)}</td> */}
               <td><button onClick={addConsult}>Add Consult</button></td>
               <td><button onClick={editInfo}>Edit Info</button></td>
               <td><button onClick={() => deleteValidation(item.id)}>Delete Client</button></td>
