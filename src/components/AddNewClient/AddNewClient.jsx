@@ -44,7 +44,10 @@ function addNewClient() {
       ).then((response) => {
         console.log('back from new client POST', response.data);
         //swal success indicator
-
+        swal({
+          text: "Your new client has been submitted!",
+          icon: "success"
+        });
         //clear input feilds
         setFullName('');
         setAddress('');
@@ -54,7 +57,7 @@ function addNewClient() {
         setPhone('');
         setEmail('');
         //route to client profile page TODO make '/client-profile' route/component
-        //history.push('/client-profile');
+        history.push('/Profile');
       }).catch((error) => {
         console.log('error in new client POST', error);
       });
@@ -66,7 +69,7 @@ function addNewClient() {
     history.push('/user');
   }//end goBack
   
-  return (
+  return(
     <div >
           
       {/* <div className="leaf-logo">
