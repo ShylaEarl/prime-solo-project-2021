@@ -78,31 +78,38 @@ function addNewClient() {
       
       <form id="client-form" onSubmit={addNewClient}>
         <h3>New Client Information</h3>
-        <input placeholder="Client Name"
+        <input type="text"
+          placeholder="Client Name"
           value={full_name}
           onChange={(event) => setFullName(event.target.value)}
         />
-        <input placeholder="Address"
+        <input type="text"
+          placeholder="Address"
           value={address}
           onChange={(event) => setAddress(event.target.value)}
         />
-        <input placeholder="City"
+        <input type="text"
+          placeholder="City"
           value={city}
           onChange={(event) => setCity(event.target.value)}
         />
-        <input placeholder="State"
+        <input type="text"
+          placeholder="State"
           value={state}
           onChange={(event) => setState(event.target.value)}
         />
-        <input placeholder="Zip Code"
+        <input type="text"
+          placeholder="Zip Code"
           value={zip_code}
           onChange={(event) => setZipCode(event.target.value)}
         />
-        <input placeholder="Phone Number"
+        <input type="text"
+          placeholder="Phone Number"
           value={phone}
           onChange={(event) => setPhone(event.target.value)}
         />
-        <input placeholder="Email Address"
+        <input type="text"
+          placeholder="Email Address"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />

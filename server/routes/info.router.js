@@ -43,7 +43,24 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500)
     })
 
-});
+}); //end new client POST route
+
+//POST route to add new appointment
+router.post('/', rejectUnauthenticated, (req, res) => {
+  
+  const query = `INSERT INTO "appointment" ("appt_name", "date", "primary_concern", 
+      "notes", "summary", "client_id") VALUES ($1, $2, $3, $4, $5, $6);`;
+  pool.query(query, [req.body.appt_name, req.body.date, req.body.primary_concern, 
+        req.body.notes, req.body.summary, req.body.client.id])
+    .then(result => {
+      console.log('new appt object POST', result.rows);
+      res.sendStatus(201);
+    }).catch(error => {
+      console.log(error);
+      res.sendStatus(500)
+    })
+
+}); //end new appt POST route
 
 // Server-side validation!
 //  let newTask = req.body;

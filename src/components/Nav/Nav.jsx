@@ -22,16 +22,31 @@ function Nav() {
       <Link to="/home">
         Home
       </Link>
+      <br/>
       <div>
         <Link to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>
+        <br/>
 
         {user.id && (
           <>
+            <Link to=" ">
+              Client Bill of Rights
+            </Link>
+            <br/>
+            <Link to=" ">
+              Health History Form
+            </Link>
+            <br/>
+            <Link to=" ">
+              Aftercare Instruction Sheet
+            </Link>
+            <br/>
             <Link to="/info">
               Add New Client
             </Link>
+            <br/>
             <LogOutButton />
           </>
         )}
