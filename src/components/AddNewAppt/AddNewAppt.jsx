@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux'; // useDispatch,
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'; // useDispatch,
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,8 +8,17 @@ function AddNewAppt(){
     //functionality to route to a page
     const history = useHistory();
 
-    //instance of client redux store for name? or props?
-    //const client = useSelector((store) => store.client);
+    //functionality to dispatch information to a saga or reducer
+    const dispatch = useDispatch();
+
+    //instance of client redux store for name (currently also has appt info)
+    const client = useSelector((store) => store.client);
+
+    //axios get (or useEffect dispatch to saga) to retrieve clients from DB
+    useEffect(() => {
+        dispatch({ type: 'FETCH_CLIENT' }); 
+        //dispatch({ type: 'FETCH_APPT' }); 
+    }, []);
 
     //sets local state for post request
     const [appt_name, setApptName] = useState('');
@@ -31,7 +40,7 @@ function AddNewAppt(){
                 appt_name: appt_name,
                 date: date,
                 primary_concern: primary_concern,
-                id: 7,
+                id: client.id,
             }
             ).then((response) => {
                 console.log('back from new appt POST', response.data);
@@ -61,8 +70,10 @@ function AddNewAppt(){
         <div>
             <form id="appt-form" onSubmit={addNewAppt}>
                 <h3>Adding New Appointment For:</h3>
-                {/* {JSON.stringify(client)} */}
+                {JSON.stringify(client)}
                 <p>Willow Rosa Lee (redux - table row id)</p>
+                {/* do I need to map here to get name to render? How do I just get one to show up? */}
+                <p>{client.full_name}</p>
                 <input type="text"
                     placeholder="Appointment Name" 
                     value={appt_name}

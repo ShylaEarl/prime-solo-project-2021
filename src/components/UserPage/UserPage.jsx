@@ -8,6 +8,9 @@ function UserPage() {
 
   //functionality to route to a page
   const history = useHistory();
+
+  //whole store
+  const store = useSelector((store) => store);
   
   //client store instance 
   const client = useSelector((store) => store.client);
@@ -45,7 +48,7 @@ function UserPage() {
     .then((response) => {
       console.log('delete request', response);
       //get call replaced by useEffect
-      dispatch({ type: 'FETCH_CLIENT' }); //should be FETCH_APPT when all is working
+      dispatch({ type: 'FETCH_CLIENT' }); //should be FETCH_APPT when all is working, using CLIENT for testing
     })
     .catch((error) => {
       console.log('error in DELETE', error);
@@ -75,7 +78,8 @@ function UserPage() {
   return (
     <div >
       <h3>A2O Client Base</h3>
-      {/* {JSON.stringify(client)}  should be appt rather than client when working*/}
+      {/* {JSON.stringify(appt)}  */}
+      {/* should be appt rather than client when working */}
       <table>
         <thead>
           <tr>
@@ -93,6 +97,8 @@ function UserPage() {
             // does there need to be a return here?
             <tr key={i}>
               <td>{item.full_name}</td>
+              <td>appt name</td>
+              <td>appt date</td>
               {/* <td>{item.appt_name}</td>
               <td>{item.date.slice(0, 10)}</td> */}
               <td><button onClick={addConsult}>Add Consult</button></td>
@@ -113,3 +119,4 @@ export default UserPage;
 // const user = useSelector((store) => store.user);
 // <h2>Welcome, {user.username}!</h2>
 // <p>Your ID is: {user.id}</p>
+// these use takeLatest in sagas to get most recent rather than all.
