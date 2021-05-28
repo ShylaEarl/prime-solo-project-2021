@@ -8,6 +8,8 @@ const router = express.Router();
 // `SELECT * FROM "appointment"
 //     JOIN "client" ON client.id=appointment.client_id;`
 
+//SELECT * FROM "client";
+
 //get all clients (and appointments?) from the DB (for client table)
 router.get('/', (req, res) => {
 
