@@ -31,13 +31,13 @@ function UserPage() {
   const addConsult = (id) => {
     //need to add id param here from table row and send to AppAppt page w/ name too.
     console.log('add clicked! id =', id);
-    // history.push('/AddAppt');
+    history.push('/AddAppt');
   }
 
   //editInfo function
   const editInfo = (id) => {
     console.log('edit clicked! id =', id);
-    // history.push('/Profile');
+    history.push('/Profile');
   }
 
   //permanently deletes client from DB (Should this be moved to a saga?)
@@ -48,7 +48,7 @@ function UserPage() {
     .then((response) => {
       console.log('delete request', response);
       //get call replaced by useEffect
-      dispatch({ type: 'FETCH_CLIENT' }); //should be FETCH_APPT when all is working, using CLIENT for testing
+      dispatch({ type: 'FETCH_CLIENT' }); 
     })
     .catch((error) => {
       console.log('error in DELETE', error);

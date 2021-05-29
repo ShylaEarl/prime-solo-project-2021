@@ -9,7 +9,7 @@ function Nav() {
 
   let loginLinkData = {
     path: '/login',
-    text: 'Login / Register',
+    text: 'Login',
   };
 
   if (user.id != null) {

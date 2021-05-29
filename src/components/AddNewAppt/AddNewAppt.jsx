@@ -35,12 +35,12 @@ function AddNewAppt(){
               }
             })
         } else {
-            axios.post(`/api/info/${id}`, //do I use id here instead of adding it to the object? 
+            axios.post(`/api/info/AddAppt`, ///${id} do I use id here instead of adding it to the object? 
             {
                 appt_name: appt_name,
                 date: date,
                 primary_concern: primary_concern,
-                id: client.id,
+                client_id: client.id,
             }
             ).then((response) => {
                 console.log('back from new appt POST', response.data);

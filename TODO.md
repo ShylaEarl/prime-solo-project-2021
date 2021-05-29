@@ -52,9 +52,9 @@
 - [x] create client saga & reducer
 - [x] create appointment saga & reducer
 - [x] map appt info array to DOM/table (currently also includes client data)
-- [] add 'Add Appt' button
+- [x] add 'Add Appt' button
     - [] add functionality - route to Add New Appointment page /new-appt
-- [] add 'Edit' button
+- [x] add 'Edit' button
     - [] add functionality - route to Client Profile page /client-profile
 - [x] add 'Delete' button
     - [x] add functionality

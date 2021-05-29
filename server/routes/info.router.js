@@ -5,29 +5,15 @@ const {
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// `SELECT * FROM "appointment"
-//     JOIN "client" ON client.id=appointment.client_id;`
-
-//SELECT * FROM "client";
-
-//get all clients (and appointments?) from the DB (for client table)
+//MVP GET route to get all clients from DB/server to client reducer/client table
 router.get('/', (req, res) => {
 
-  const clientQuery = `SELECT * FROM "client";`;
-  pool.query(clientQuery)
+  //returns all appt info to reducer
+  const query = `SELECT * FROM "client";`;
+  pool.query(query)
   .then(result => {
     res.send(result.rows);
-    //add second query for appt info based on client id? or JOINs? here
-    const apptQuery = `SELECT * FROM "appointment";`; //WHERE client_id = $1
-    pool.query(apptQuery)
-    .then(result => {
-      res.send(result.rows);
-    }).catch(error => {
-      console.log('in GET', error);
-      res.sendStatus(500)
-    }) 
-    
-  }) //catch for first query
+  })
   .catch(error => {
     console.log('Error client GET', error);
     res.sendStatus(500)
@@ -35,15 +21,27 @@ router.get('/', (req, res) => {
 
 });
 
-//do I need to add /:id here?
+// `SELECT * FROM "appointment"
+//     JOIN "client" ON client.id=appointment.client_id;`
+
+//get all clients (and appointments?) from the DB (for client table)
 // router.get('/', (req, res) => {
 
-//   //returns all appt info to reducer
-//   const query = `SELECT * FROM "appointment";`;
-//   pool.query(query)
+//   const clientQuery = `SELECT * FROM "client";`;
+//   pool.query(clientQuery)
 //   .then(result => {
 //     res.send(result.rows);
-//   })
+//     //add second query for appt info based on client id? or JOINs? here
+//     const apptQuery = `SELECT * FROM "appointment";`; //WHERE client_id = $1
+//     pool.query(apptQuery)
+//     .then(result => {
+//       res.send(result.rows);
+//     }).catch(error => {
+//       console.log('in GET', error);
+//       res.sendStatus(500)
+//     }) 
+    
+//   }) //catch for first query
 //   .catch(error => {
 //     console.log('Error client GET', error);
 //     res.sendStatus(500)
@@ -51,7 +49,7 @@ router.get('/', (req, res) => {
 
 // });
 
-//POST route to add new client 
+//MVP POST route to add new client to DB/server  
 router.post('/', rejectUnauthenticated, (req, res) => {
 
   const user_id = req.user.id;
@@ -75,12 +73,14 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 }); //end new client POST route
 
 //POST route to add new appointment ***May need to add :id here...
-router.post('/:id', rejectUnauthenticated, (req, res) => {
+//double check route/ do I need ${id} / move to new router?
+router.post('/AddAppt', rejectUnauthenticated, (req, res) => {
   //how do I capture the client id and add it to the query?
+  const client_id = req.params.id; 
   const query = `INSERT INTO "appointment" ("appt_name", "date", "primary_concern", 
       "notes", "summary", "client_id") VALUES ($1, $2, $3, $4, $5, $6);`;
   pool.query(query, [req.body.appt_name, req.body.date, req.body.primary_concern, 
-        req.body.notes, req.body.summary, req.body.client.id])
+        req.body.notes, req.body.summary, client_id])
     .then(result => {
       console.log('new appt object POST', result.rows);
       res.sendStatus(201);
@@ -97,11 +97,9 @@ router.post('/:id', rejectUnauthenticated, (req, res) => {
 //   // Send back a HTTP 400 error
 //   res.sendStatus(400);
 
-//PUT route to edit client information (base mode) 
+//MVP PUT route to edit client information 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
-
-
-
+  const query = `UPDATE `
 });
 
 //DELETE route to delete a client (base mode) 

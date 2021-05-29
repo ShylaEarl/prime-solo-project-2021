@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { useHistory } from 'react-router-dom';
-//import './LandingPage.css';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -13,7 +12,7 @@ function LandingPage() {
   };
 
   return (
-    <div className="main">
+    <div className="card-whole">
       <h2>Hello Friends!</h2>
         <p>
         Welcome to Acorn to Oak Herbal where your holistic health is 
@@ -26,14 +25,12 @@ function LandingPage() {
         Everyone is welcome here, and whether long time friend or new to 
         the crew, we look forward to seeing you!
         </p>
-
-        {/* <div className="formPanel">
-          <RegisterForm />
-            <h4>Already a Member?</h4>
-            <button className="btn_asLink" onClick={onLogin}>
-              Login
-            </button>
-        </div> */}
+        
+      <RegisterForm />
+      {/* <h4>Already a Client?</h4>
+      <button className="btn_asLink" onClick={onLogin}>
+        Login
+      </button> */}
 
     </div>
   );
