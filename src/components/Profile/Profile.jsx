@@ -6,6 +6,9 @@ function Profile(){
     //instance of appointment redux store to display appointment info?
 
     //PUT route to update client information
+    // const updateClientInfo = (event, client) => {
+    //     console.log('update', client);
+    // }
 
     //functionality to route to a page
     const history = useHistory();

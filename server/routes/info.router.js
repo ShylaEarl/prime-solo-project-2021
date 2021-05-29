@@ -13,18 +13,43 @@ const router = express.Router();
 //get all clients (and appointments?) from the DB (for client table)
 router.get('/', (req, res) => {
 
-  //should this be a joins query to retrieve appt data too? `SELECT * FROM "client";`
-  const query = `SELECT * FROM "client";`;
-  pool.query(query)
+  const clientQuery = `SELECT * FROM "client";`;
+  pool.query(clientQuery)
   .then(result => {
     res.send(result.rows);
-  })
+    //add second query for appt info based on client id? or JOINs? here
+    const apptQuery = `SELECT * FROM "appointment";`; //WHERE client_id = $1
+    pool.query(apptQuery)
+    .then(result => {
+      res.send(result.rows);
+    }).catch(error => {
+      console.log('in GET', error);
+      res.sendStatus(500)
+    }) 
+    
+  }) //catch for first query
   .catch(error => {
     console.log('Error client GET', error);
     res.sendStatus(500)
   })
 
 });
+
+//do I need to add /:id here?
+// router.get('/', (req, res) => {
+
+//   //returns all appt info to reducer
+//   const query = `SELECT * FROM "appointment";`;
+//   pool.query(query)
+//   .then(result => {
+//     res.send(result.rows);
+//   })
+//   .catch(error => {
+//     console.log('Error client GET', error);
+//     res.sendStatus(500)
+//   })
+
+// });
 
 //POST route to add new client 
 router.post('/', rejectUnauthenticated, (req, res) => {
@@ -50,7 +75,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 }); //end new client POST route
 
 //POST route to add new appointment ***May need to add :id here...
-router.post('/', rejectUnauthenticated, (req, res) => {
+router.post('/:id', rejectUnauthenticated, (req, res) => {
   //how do I capture the client id and add it to the query?
   const query = `INSERT INTO "appointment" ("appt_name", "date", "primary_concern", 
       "notes", "summary", "client_id") VALUES ($1, $2, $3, $4, $5, $6);`;
@@ -74,6 +99,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 //PUT route to edit client information (base mode) 
 router.put('/:id', rejectUnauthenticated, (req, res) => {
+
+
 
 });
 
