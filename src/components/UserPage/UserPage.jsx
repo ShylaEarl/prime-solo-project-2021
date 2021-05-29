@@ -28,16 +28,16 @@ function UserPage() {
   }, []);
 
   //addConsult function
-  const addConsult = () => {
+  const addConsult = (id) => {
     //need to add id param here from table row and send to AppAppt page w/ name too.
-    console.log('add clicked!');
-    history.push('/AddAppt');
+    console.log('add clicked! id =', id);
+    // history.push('/AddAppt');
   }
 
   //editInfo function
-  const editInfo = () => {
-    console.log('edit clicked!');
-    history.push('/Profile');
+  const editInfo = (id) => {
+    console.log('edit clicked! id =', id);
+    // history.push('/Profile');
   }
 
   //permanently deletes client from DB (Should this be moved to a saga?)
@@ -84,8 +84,8 @@ function UserPage() {
         <thead>
           <tr>
             <th>Client Name</th>
-            <th>Last Consult Name</th>
-            <th>Date</th>
+            {/* <th>Last Consult Name</th>
+            <th>Date</th> */}
             <th>Add Consult</th>
             <th>Edit Info</th>
             <th>Delete Client</th>
@@ -97,12 +97,10 @@ function UserPage() {
             // does there need to be a return here?
             <tr key={i}>
               <td>{item.full_name}</td>
-              <td>appt name</td>
-              <td>appt date</td>
               {/* <td>{item.appt_name}</td>
               <td>{item.date.slice(0, 10)}</td> */}
-              <td><button onClick={addConsult}>Add Consult</button></td>
-              <td><button onClick={editInfo}>Edit Info</button></td>
+              <td><button onClick={() => addConsult(item.id)}>Add Consult</button></td>
+              <td><button onClick={() => editInfo(item.id)}>Edit Info</button></td>
               <td><button onClick={() => deleteValidation(item.id)}>Delete Client</button></td>
             </tr>
           )}

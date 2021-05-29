@@ -35,7 +35,7 @@ function AddNewAppt(){
               }
             })
         } else {
-            axios.post('/api/info', 
+            axios.post(`/api/info/${id}`, //do I use id here instead of adding it to the object? 
             {
                 appt_name: appt_name,
                 date: date,
