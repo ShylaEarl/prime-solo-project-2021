@@ -17,8 +17,9 @@
 ### App & Login 1.1 (T 5.25.21)
 - [x] source in sweet alert to index.html
 - [x] Grid-responsive page styling template in App moved to Practice.jsx/css
-    - [] base css for login page
-    - [] base css for login form
+    - [x] base css for landing page
+    - [x] base css for login page
+    - [x] base css for login form
 - [x] Authenticate and Authorize admin user 
     - [x] Test POST & GET routes in Postman
 - [x] Add A2O branding/style guide assets
@@ -37,7 +38,7 @@
     - [] add server side validation? only full_name is validated on client...
     - [x] test route in Postman
     - [x] route adding data to DB!
-- [] Grid-responsive page styling
+- [x] Grid-responsive page styling
 
 ### CSS grid template/Responsive styling (worked on T 5.25.21 & W 5.26.21)
 - [x] header rendering from App across all views
@@ -52,9 +53,9 @@
 - [x] create client saga & reducer
 - [x] create appointment saga & reducer
 - [x] map appt info array to DOM/table (currently also includes client data)
-- [] add 'Add Appt' button
+- [x] add 'Add Appt' button
     - [] add functionality - route to Add New Appointment page /new-appt
-- [] add 'Edit' button
+- [x] add 'Edit' button
     - [] add functionality - route to Client Profile page /client-profile
 - [x] add 'Delete' button
     - [x] add functionality
@@ -62,7 +63,8 @@
         - [x] add swal to double check on deletion
         - [x] swal to notify that delete was successful
         - [x] rerender DOM/remove table row
-- [] table css
+- [x] table css
+    - [] make it responsive!
 - [] navbar? This is the first view it appears in. 
 
 ### Client Profile 1.4 (TH 5.27.21)

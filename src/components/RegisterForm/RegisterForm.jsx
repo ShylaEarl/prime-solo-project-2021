@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function RegisterForm() {
+  const history = useHistory();
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector((store) => store.errors);
@@ -17,6 +20,7 @@ function RegisterForm() {
         password: password,
       },
     });
+
   }; // end registerUser
 
   return (
@@ -52,8 +56,20 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <input className="a2o-btn" type="submit" name="submit" value="Register" />
       </div>
+      <h5>Already a Client?</h5>
+      <center>
+        <button
+          type="button"
+          className="btn btn_asLink"
+          onClick={() => {
+            history.push('/login');
+          }}
+        >
+          Login
+        </button>
+      </center>
     </form>
   );
 }
