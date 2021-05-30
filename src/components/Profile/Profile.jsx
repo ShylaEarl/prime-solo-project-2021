@@ -20,9 +20,12 @@ function Profile(props){ //props here to get specific client id? params? redux?
 
     //whole store
     const store = useSelector((store) => store);
-    
+
     //client store instance 
     const client = useSelector((store) => store.client);
+    
+    // //client store instance 
+    // const client = useSelector((store) => store.clientInfo);
     
     //appointment store instance currently holds all appt info and client info
     const appt = useSelector((store) => store.appt);
@@ -36,7 +39,7 @@ function Profile(props){ //props here to get specific client id? params? redux?
         dispatch({ type: 'FETCH_APPT' }); 
     }, []);
 
-    let updateClicked = false;
+    
 
     //PUT route to update client information
     const updateClientInfo = () => { //event, client
@@ -52,13 +55,17 @@ function Profile(props){ //props here to get specific client id? params? redux?
         // console.log('error in UPDATE', error);
         // });
 
-        updateClicked = false;
+        setupdateClicked(false);
         console.log('update', updateClicked);
 
     }
 
+    const [updateClicked, setupdateClicked] = useState(false);
+
+    //let updateClicked = false;
+
     const renderToInputs = () => {
-        updateClicked = true;
+        setupdateClicked(true);
         console.log('update', updateClicked);
     }
 

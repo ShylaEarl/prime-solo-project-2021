@@ -24,6 +24,8 @@ function AddNewAppt(){
     const [appt_name, setApptName] = useState('');
     const [date, setDate] = useState('');
     const [primary_concern, setPrimaryConcern] = useState('');
+    const [notes, setNotes] = useState('');
+    const [summary, setSummary] = useState('');
 
     //POST route to submit new appointment information
     const addNewAppt = () => {
@@ -90,6 +92,16 @@ function AddNewAppt(){
                     placeholder="Primary Concern"
                     value={primary_concern}
                     onChange={(event) => setPrimaryConcern(event.target.value)}
+                />
+                <input type="text"
+                    placeholder="Notes"
+                    value={notes}
+                    onChange={(event) => setNotes(event.target.value)}
+                />
+                <input type="text"
+                    placeholder="Summary"
+                    value={summary}
+                    onChange={(event) => setSummary(event.target.value)}
                 />
                 <br />
                 <input className="a2o-btn" type="submit" name="submit" value="Submit" />
