@@ -34,12 +34,6 @@ function UserPage() {
     history.push('/AddAppt');
   }
 
-  //editInfo function
-  const editInfo = (id) => {
-    console.log('edit clicked! id =', id);
-    history.push('/Profile');
-  }
-
   //permanently deletes client from DB (Should this be moved to a saga?)
   const deleteClient = (id) => {
     console.log('deleting client', id);
@@ -74,6 +68,13 @@ function UserPage() {
       }
     });
   }
+
+  //on click, capture client id, send specific client info to client info reducer and route to profile page
+  const routeToEdit = (event, item) => {
+    console.log('edit clicked! client =', item);
+    dispatch({ type: 'SET_CLIENT_INFO', payload: {item}})
+    history.push('/Profile');
+  }
   
   return (
     <div className="card-whole">
@@ -100,7 +101,7 @@ function UserPage() {
               {/* <td>{item.appt_name}</td>
               <td>{item.date.slice(0, 10)}</td> */}
               <td><button className="tbl-btn" onClick={() => addConsult(item.id)}>Add Consult</button></td>
-              <td><button className="tbl-btn" onClick={() => editInfo(item.id)}>Edit Info</button></td>
+              <td><button className="tbl-btn" onClick={(event) => routeToEdit(event, item)}>Edit Info</button></td>
               <td><button className="tbl-btn" onClick={() => deleteValidation(item.id)}>Delete Client</button></td>
             </tr>
           )}

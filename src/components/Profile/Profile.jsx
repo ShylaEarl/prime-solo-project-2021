@@ -70,33 +70,10 @@ function Profile(props){ //props here to get specific client id? params? redux?
 
     return(
         <div className="card-whole">
-              {/* if(updateClicked == false show client info) 
-                from edan's wk3 challenge feedback...
-                <div className=${updateClicked ? 'card-half-left-inputs' : 'card-half-left'} */}
-            <div className="card-half-left">
-                {/* how do I render the specific client's info? props? redux?*/}
-                <h2>Willow Rosa Lee </h2>
-                {/* <p>{props.client.full_name}</p> */}
-                <p>234 Garden St.</p>
-                {/* <p>{props.client.address}</p> */}
-                <p>City, </p>
-                {/* <p>{props.client.city} </p> */}
-                <p>State, </p>
-                {/* <p>{props.client.state} </p> */}
-                <p>Zip </p>
-                {/* <p>{props.client.zip_code}</p> */}
-                <p>808-345-6789</p>
-                {/* <p>{props.client.phone}</p> */}
-                <p>plantLove@gmail.com</p>
-                {/* <p>{props.client.email}</p> */}
-
-                {/* onClick renders to editable input feilds for client info and submit button, on click of submit renders back to updated info view */}
-                <button className="a2o-btn" onClick={renderToInputs}>Update Info</button>
-            </div>
-            :
-                {/* : else (show editable input feilds with a submit button that 
-                    dispatches the action type UPDATE_CLIENT_INFO with a new payload 
-                    of the updated information from input feilds, on click of submit button, show client info with updates) */}
+              {/* if(updateClicked == false show client info on 'card-half-left') 
+                from edan's wk3 challenge feedback... */}
+            {/* <div className={updateClicked ? "card-half-left-inputs" : "card-half-left"}> */}
+            {updateClicked ? 
             <div className="card-half-left-inputs"> 
                 <input type="text"
                 placeholder={client.full_name}
@@ -134,7 +111,30 @@ function Profile(props){ //props here to get specific client id? params? redux?
                 onChange={(event) => setEmail(event.target.value)}
                 />
                 <button className="a2o-btn" onClick={updateClientInfo}>Submit</button>
-            </div>
+            </div> 
+            :
+            <div className="card-half-left"> 
+                {/* how do I render the specific client's info? props? redux?*/}
+                <h2>Willow Rosa Lee </h2>
+                {/* <p>{props.client.full_name}</p> */}
+                <p>234 Garden St.</p>
+                {/* <p>{props.client.address}</p> */}
+                <p>City, </p>
+                {/* <p>{props.client.city} </p> */}
+                <p>State, </p>
+                {/* <p>{props.client.state} </p> */}
+                <p>Zip </p>
+                {/* <p>{props.client.zip_code}</p> */}
+                <p>808-345-6789</p>
+                {/* <p>{props.client.phone}</p> */}
+                <p>plantLove@gmail.com</p>
+                {/* <p>{props.client.email}</p> */}
+
+                {/* onClick renders to editable input feilds for client info and submit button, on click of submit renders back to updated info view */}
+                <button className="a2o-btn" onClick={renderToInputs}>Update Info</button>
+            </div>}
+            {/* this div closes the conditional rendering div */}
+            {/* </div>   */}
             
             {/* specific client's appointment history list */}
             <div className="card-half-right">
