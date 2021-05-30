@@ -1,10 +1,12 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-import {useSelector} from 'react-redux';
 
 function Nav() {
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
   let loginLinkData = {
@@ -19,35 +21,47 @@ function Nav() {
 
   return (
     <nav>
-      <Link to='/home'>
+      <Link className="navLink" to='/home'>
         Home
       </Link>
       <br/>
+      <br/>
       <div>
-        <Link to={loginLinkData.path}>
+        <Link className="navLink" to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>
+        <br/>
         <br/>
 
         {user.id && (
           <>
-            <Link to=" ">
-              Client Bill of Rights
-            </Link>
-            <br/>
-            <Link to=" ">
-              Health History Form
-            </Link>
-            <br/>
-            <Link to=" ">
-              Aftercare Instruction Sheet
-            </Link>
-            <br/>
-            <Link to="/info">
+            <Link className="navLink" to="/info">
               Add New Client
             </Link>
             <br/>
-            <LogOutButton />
+            <br/>
+            <Link className="navLink" to=" ">
+              Client Bill of Rights
+            </Link>
+            <br/>
+            <br/>
+            <Link className="navLink" to=" ">
+              Health History Form
+            </Link>
+            <br/>
+            <br/>
+            <Link className="navLink" to=" ">
+              Aftercare Instruction Sheet
+            </Link>
+            <br/>
+            {/* <LogOutButton /> */}
+            <br/>
+            <button
+              className="logout-btn"
+              onClick={() => dispatch({ type: 'LOGOUT' })}
+            >
+              Log Out
+            </button>
           </>
         )}
 

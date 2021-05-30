@@ -52,10 +52,10 @@ function Profile(props){ //props here to get specific client id? params? redux?
     }
 
     return(
-        <div>
-            <div className="card">
+        <div className="card-whole">
+            <div className="card-half-left">
                 {/* how do I render the specific client's info? props? redux?*/}
-                <p>Willow Rosa Lee </p>
+                <h2>Willow Rosa Lee </h2>
                 {/* <p>{props.client.full_name}</p> */}
                 <p>234 Garden St.</p>
                 {/* <p>{props.client.address}</p> */}
@@ -71,13 +71,15 @@ function Profile(props){ //props here to get specific client id? params? redux?
                 {/* <p>{props.client.email}</p> */}
 
                 {/* onClick renders to editable input feilds for client info and submit button, on click of submit renders back to updated info view */}
-                <button onClick={renderUpdateInputs}>Update Info</button>
+                <button className="a2o-btn" onClick={renderUpdateInputs}>Update Info</button>
             </div>
 
-            <div className="card">
+            <div className="card-half-right">
                 <h3>Appointment History</h3>
                 <ul>
-                    <li onClick={apptDetails}>12/12/20 Winter Wellness</li>
+                {/* font awesome leaf icon for li - still need to install */}
+                <i class="fab fa-pagelines"></i>
+                <li className="li_asLink" onClick={apptDetails}>12/12/20 Winter Wellness</li>
                 </ul>
                 
                 {/* map through appt reducer to return all appts specific to this client */}

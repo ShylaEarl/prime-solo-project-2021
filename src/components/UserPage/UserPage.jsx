@@ -76,8 +76,8 @@ function UserPage() {
   }
   
   return (
-    <div >
-      <h3>A2O Client Base</h3>
+    <div className="card-whole">
+      <h2>Acorn to Oak Clients</h2>
       {/* {JSON.stringify(appt)}  */}
       {/* should be appt rather than client when working */}
       <table>
@@ -99,9 +99,9 @@ function UserPage() {
               <td>{item.full_name}</td>
               {/* <td>{item.appt_name}</td>
               <td>{item.date.slice(0, 10)}</td> */}
-              <td><button onClick={() => addConsult(item.id)}>Add Consult</button></td>
-              <td><button onClick={() => editInfo(item.id)}>Edit Info</button></td>
-              <td><button onClick={() => deleteValidation(item.id)}>Delete Client</button></td>
+              <td><button className="tbl-btn" onClick={() => addConsult(item.id)}>Add Consult</button></td>
+              <td><button className="tbl-btn" onClick={() => editInfo(item.id)}>Edit Info</button></td>
+              <td><button className="tbl-btn" onClick={() => deleteValidation(item.id)}>Delete Client</button></td>
             </tr>
           )}
         </tbody>

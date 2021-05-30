@@ -23,9 +23,11 @@ function addNewClient() {
 
   //collects local state info, bundles it as an object and POSTs to DB
   const addNewClient = () => {
-    if(full_name == ''){
+    //input validation and alert
+    if(full_name == '' || address == '' || city == '' || state == '' ||
+        zip_code == '' || phone == '' || email == ''){
       swal({
-        text: 'You forgot to add your new clients name!',
+        text: 'Please fill in all fields!',
         buttons: {
           ok: true,
         }
@@ -70,7 +72,7 @@ function addNewClient() {
   }//end goBack
   
   return(
-    <div >
+    <div className="card-whole">
           
       {/* <div className="leaf-logo">
         <img src=" " alt="illustrated oak leaf"/>
@@ -117,8 +119,8 @@ function addNewClient() {
         <button className="a2o-btn" onClick={goBack}>Cancel</button>
       </form>
 
-      {/* <div>
-        <img src=" " alt="illustrated oak leaf"/>
+      {/* <div className="lavendar-ill">
+        <img src="lavendar-illustration.jpg" alt="illustrated lavendar stem"/>
       </div> */}
           
     </div>

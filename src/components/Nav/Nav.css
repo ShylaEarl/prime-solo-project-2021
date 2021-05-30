@@ -1,4 +1,30 @@
-.nav {
+.navLink {
+  color: #5E3D18;
+  text-shadow: .75px .75px hotpink;
+  font-size: 20px;
+  /* padding: 25px;
+  margin: 5rem; */
+}
+
+.navLink:hover {
+  /* background-color: #008183; */
+  border-color: ivory;
+  color: ivory;
+  text-shadow: .75px .75px hotpink;
+}
+
+.logout-btn {
+  background-color: ivory;
+  border-radius: 5px;
+  padding: .5rem;
+}
+
+.logout-btn:hover {
+  background-color: #5E3D18;
+  color: ivory;
+}
+
+/* .nav {
   /* flex box layout */
   /* display: flex;
   justify-content: space-between;
@@ -7,10 +33,10 @@
   margin: 0 0 30px;
   background-color: #00acb0;
   overflow: hidden; */
-}
+/* }  */
 
-.navLink {
-  /* display: inline-block;
+/* from .navLink */
+/* display: inline-block;
   color: #f2f2f2;
   background-color: #00acb0;
   text-align: center;
@@ -23,8 +49,3 @@
   /* border: none;
   cursor: pointer;
   outline: 0; */
-}
-
-.navLink:hover {
-  /* background-color: #008183; */
-}

@@ -20,8 +20,16 @@ h2 {
   text-shadow: 1px 1px hotpink;
 }
 
+h3 {
+  text-shadow: .5px .5px hotpink;
+}
+
 h5 {
   display: inline;
+}
+
+ul {
+  list-style-type: none;
 }
 
 /* --------------------------------------------------------------------------------
@@ -135,8 +143,8 @@ Buttons & Links
 }
 
 .a2o-btn:hover {
-  background-color: #F7903D;
-  /* color: ivory; */
+  background-color: #5E3D18;
+  color: ivory;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -157,15 +165,16 @@ Buttons & Links
   text-shadow: .5px .5px #5E3D18;
 }
 
-.ul_asLink {
-  list-style-type: none;
+.li_asLink {
   border-bottom: 1px solid #5E3D18;
   color: #5E3D18;
+  
 }
 
-.ul_asLink:hover {
+.li_asLink:hover {
   border-color: #F7903D;
   color: #F7903D;
+  text-shadow: .25px .25px #5E3D18;
 }
 
 /* --------------------------------------------------------------------------------
@@ -221,18 +230,28 @@ input {
 }
 
 .card-half-left {
-  background-color: ivory;
+  background-color: antiquewhite;
   border-radius: 10px;
   box-shadow: 0 2px 4px lightgrey;
+  padding: 1rem;
+  margin: 1rem;
+  /* display: inline-block; */
 }
 
 .card-half-right {
-  background-color: ivory;
+  width:auto;
+  height:auto;
+  background-color: antiquewhite;
   border-radius: 10px;
   box-shadow: 0 2px 4px lightgrey;
+  padding: 1rem;
+  margin: 1rem;
+  /* display: inline-block; */
 }
 
 .card-third-left {
+  width:auto;
+  height:auto;
   background-color: ivory;
   border-radius: 10px;
   box-shadow: 0 2px 4px lightgrey;
