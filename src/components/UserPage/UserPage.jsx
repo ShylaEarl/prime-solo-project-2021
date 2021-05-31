@@ -10,7 +10,7 @@ function UserPage() {
   const history = useHistory();
 
   //whole store
-  const store = useSelector((store) => store);
+  //const store = useSelector((store) => store);
   
   //client store instance 
   const client = useSelector((store) => store.client);
@@ -26,13 +26,6 @@ function UserPage() {
     dispatch({ type: 'FETCH_CLIENT' }); 
     dispatch({ type: 'FETCH_APPT' }); 
   }, []);
-
-  //addConsult function
-  const addConsult = (id) => {
-    //need to add id param here from table row and send to AppAppt page w/ name too.
-    console.log('add clicked! id =', id);
-    history.push('/AddAppt');
-  }
 
   //permanently deletes client from DB (Should this be moved to a saga?)
   const deleteClient = (id) => {
@@ -69,11 +62,18 @@ function UserPage() {
     });
   }
 
-  //on click, capture client id, send specific client info to client info reducer and route to profile page
+  //edit function on click, capture client id, send specific client info to client info reducer and route to profile page
   const routeToEdit = (event, item) => {
     console.log('edit clicked! client =', item);
     dispatch({ type: 'SET_CLIENT_INFO', payload: item})
     history.push('/Profile');
+  }
+
+  //addConsult function on click, capture client id, send specific client info to client info reducer and route to add appt page
+  const routeToAddConsult = (event, item) => {
+    console.log('add clicked! client =', item);
+    dispatch({ type: 'SET_CLIENT_INFO', payload: item})
+    history.push('/AddAppt');
   }
   
   return (
@@ -100,7 +100,7 @@ function UserPage() {
               <td>{item.full_name}</td>
               {/* <td>{item.appt_name}</td>
               <td>{item.date.slice(0, 10)}</td> */}
-              <td><button className="tbl-btn" onClick={() => addConsult(item.id)}>Add Consult</button></td>
+              <td><button className="tbl-btn" onClick={(event) => routeToAddConsult(event, item)}>Add Consult</button></td>
               <td><button className="tbl-btn" onClick={(event) => routeToEdit(event, item)}>Edit Info</button></td>
               <td><button className="tbl-btn" onClick={() => deleteValidation(item.id)}>Delete Client</button></td>
             </tr>

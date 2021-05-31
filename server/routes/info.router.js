@@ -8,7 +8,7 @@ const router = express.Router();
 //MVP GET route to get all clients from DB/server to client reducer/client table
 router.get('/', (req, res) => {
 
-  //returns all appt info to reducer
+  //returns all client info to reducer
   const query = `SELECT * FROM "client";`;
   pool.query(query)
   .then(result => {
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     res.sendStatus(500)
   })
 
-});
+});//end client GET route
 
 // `SELECT * FROM "appointment"
 //     JOIN "client" ON client.id=appointment.client_id;`
@@ -53,7 +53,7 @@ router.get('/', (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
 
   const user_id = req.user.id;
-  //serverside validation here
+  //serverside validation TODO - need to add validation for all fields since they are all validated on client
   //if(!req.body.full_name){
   //   res.sendStatus(400);
   // }
@@ -70,11 +70,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500)
     })
 
-}); //end new client POST route
+}); //end add new client POST route
 
 //POST route to add new appointment ***May need to add :id here...
 //double check route/ do I need ${id} / move to new router?
-router.post('/AddAppt', rejectUnauthenticated, (req, res) => {
+router.post('/AddAppt/:id', rejectUnauthenticated, (req, res) => {
   //how do I capture the client id and add it to the query?
   const client_id = req.params.id; 
   const query = `INSERT INTO "appointment" ("appt_name", "date", "primary_concern", 
@@ -98,7 +98,6 @@ router.post('/AddAppt', rejectUnauthenticated, (req, res) => {
 //   res.sendStatus(400);
 
 //MVP PUT route to edit client information 
-//`/Profile/${action.payload.id}`
 router.put('/Profile/:id', rejectUnauthenticated, (req, res) => {
   console.log('post id:', req.params.id);
   console.log('post update body:', req.body);
@@ -114,13 +113,13 @@ router.put('/Profile/:id', rejectUnauthenticated, (req, res) => {
     res.sendStatus(500)
   })
 
-});
+});//end PUT route
 
-//DELETE route to delete a client (base mode) 
+//MVP DELETE route to delete a client 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
   const query = `DELETE FROM "client" WHERE id=$1;`;
-  pool.query(query, [req.params.id]) //is req.params.id correct here? 
+  pool.query(query, [req.params.id]) 
     .then(result => {
       res.sendStatus(200);
     }).catch(error => {

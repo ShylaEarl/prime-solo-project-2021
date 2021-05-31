@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+//import axios from 'axios';
 
 function Profile(){ 
 
@@ -20,12 +20,12 @@ function Profile(){
     const history = useHistory();
 
     //whole store
-    const store = useSelector((store) => store);
+    //const store = useSelector((store) => store);
 
     //client store instance 
-    const client = useSelector((store) => store.client);
+    //const client = useSelector((store) => store.client);
     
-    // //client store instance 
+    //clientInfo store instance 
     const clientInfo = useSelector((store) => store.clientInfo);
     
     //appointment store instance currently holds all appt info and client info
@@ -55,8 +55,17 @@ function Profile(){
         }
 
         console.log('updated client info:', updatedClientInfo);
+        
+        //send updated client info to editClient saga, then to server/DB
         dispatch({ type: 'UPDATE_CLIENT_INFO', payload: updatedClientInfo });
+        
+        //swal success indicator
+        swal({
+            text: "Your updated client information has been submitted!",
+            icon: "success"
+        });
 
+        //editMode off
         setupdateClicked(false);
         console.log('update', updateClicked);
 
@@ -77,6 +86,11 @@ function Profile(){
 
     }
 
+    const routeToAddAppt = (id) => {
+        console.log("routing to add appt with id:", id);
+        history.push('/AddAppt');
+    }
+
     //temporary functionality to access ApptDetails page
     const apptDetails = () => {
         console.log('appt details clicked!', );
@@ -88,37 +102,30 @@ function Profile(){
             {updateClicked ? 
             <div className="card-half-left-inputs"> 
                 <input type="text"
-                // placeholder={clientInfo.full_name}
                 value={full_name}
                 onChange={(event) => setFullName(event.target.value)}
                 />
                 <input type="text"
-                // placeholder={client.address}
                 value={address}
                 onChange={(event) => setAddress(event.target.value)}
                 />
                 <input type="text"
-                // placeholder={client.city}
                 value={city}
                 onChange={(event) => setCity(event.target.value)}
                 />
                 <input type="text"
-                // placeholder={client.state}
                 value={state}
                 onChange={(event) => setState(event.target.value)}
                 />
                 <input type="text"
-                // placeholder={client.zip_code}
                 value={zip_code}
                 onChange={(event) => setZipCode(event.target.value)}
                 />
                 <input type="text"
-                // placeholder={client.phone}
                 value={phone}
                 onChange={(event) => setPhone(event.target.value)}
                 />
                 <input type="text"
-                // placeholder={client.email}
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 />
@@ -136,6 +143,7 @@ function Profile(){
 
                 {/* onClick renders to editable input feilds for client info and submit button */}
                 <button className="a2o-btn" onClick={renderToInputs}>Update Info</button>
+                <button className="a2o-btn" onClick={() => routeToAddAppt(clientInfo.id)}>Add Appointment</button>
             </div>}
             
             {/* specific client's appointment history list */}
