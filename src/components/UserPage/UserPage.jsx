@@ -72,15 +72,15 @@ function UserPage() {
   //on click, capture client id, send specific client info to client info reducer and route to profile page
   const routeToEdit = (event, item) => {
     console.log('edit clicked! client =', item);
-    dispatch({ type: 'SET_CLIENT_INFO', payload: {item}})
+    dispatch({ type: 'SET_CLIENT_INFO', payload: item})
     history.push('/Profile');
   }
   
   return (
     <div className="card-whole">
       <h2>Acorn to Oak Clients</h2>
-      {/* {JSON.stringify(appt)}  */}
-      {/* should be appt rather than client when working */}
+      {/* {JSON.stringify(client)}  */}
+      
       <table>
         <thead>
           <tr>
@@ -92,10 +92,10 @@ function UserPage() {
             <th>Delete Client</th>
           </tr>
         </thead>
-        {/* should be appt.map when all is working */}
+        
         <tbody>
           {client.map((item, i) => 
-            // does there need to be a return here?
+            
             <tr key={i}>
               <td>{item.full_name}</td>
               {/* <td>{item.appt_name}</td>

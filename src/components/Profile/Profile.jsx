@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-function Profile(props){ //props here to get specific client id? params? redux?
+function Profile(){ 
 
-    //you will need to create and set local state here for input updates
-    //sets local state for put request
+    const [updateClicked, setupdateClicked] = useState(false);
+
+    //create and set local state for input updates
     const [full_name, setFullName] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -25,7 +26,7 @@ function Profile(props){ //props here to get specific client id? params? redux?
     const client = useSelector((store) => store.client);
     
     // //client store instance 
-    // const client = useSelector((store) => store.clientInfo);
+    const clientInfo = useSelector((store) => store.clientInfo);
     
     //appointment store instance currently holds all appt info and client info
     const appt = useSelector((store) => store.appt);
@@ -34,39 +35,46 @@ function Profile(props){ //props here to get specific client id? params? redux?
     const dispatch = useDispatch();
   
     //axios get (or useEffect dispatch to saga) to retrieve clients from DB
-    useEffect(() => {
-        dispatch({ type: 'FETCH_CLIENT' }); 
-        dispatch({ type: 'FETCH_APPT' }); 
-    }, []);
-
-    
+    // useEffect(() => {
+    //     dispatch({ type: 'FETCH_CLIENT' }); 
+    //     dispatch({ type: 'FETCH_APPT' }); 
+    // }, []);
 
     //PUT route to update client information
-    const updateClientInfo = () => { //event, client
+    const updateClientInfo = () => { 
         
-        // //axios put call to server on '/info' route 
-        // axios.put(`/api/info/${id}`)
-        // .then((response) => {
-        // console.log('put request', response);
-        // //get call replaced by useEffect
-        // //dispatch({ type: 'UPDATE_CLIENT_INFO', payload: ${id}??? }); do I include a payload here to get one specific client's details? 
-        // })
-        // .catch((error) => {
-        // console.log('error in UPDATE', error);
-        // });
+        const updatedClientInfo = {
+            id: clientInfo.id,
+            full_name: full_name,
+            address: address,
+            city: city,
+            state: state,
+            zip_code: zip_code,
+            phone: phone,
+            email: email,
+        }
+
+        console.log('updated client info:', updatedClientInfo);
+        dispatch({ type: 'UPDATE_CLIENT_INFO', payload: updatedClientInfo });
 
         setupdateClicked(false);
         console.log('update', updateClicked);
 
     }
 
-    const [updateClicked, setupdateClicked] = useState(false);
-
-    //let updateClicked = false;
-
     const renderToInputs = () => {
         setupdateClicked(true);
         console.log('update', updateClicked);
+
+        //set local state with client info from the clientInfo reducer
+        setFullName(clientInfo.full_name);
+        setAddress(clientInfo.address);
+        setCity(clientInfo.city);
+        setState(clientInfo.state);
+        setZipCode(clientInfo.zip_code);
+        setPhone(clientInfo.phone);
+        setEmail(clientInfo.email);
+
     }
 
     //temporary functionality to access ApptDetails page
@@ -77,43 +85,40 @@ function Profile(props){ //props here to get specific client id? params? redux?
 
     return(
         <div className="card-whole">
-              {/* if(updateClicked == false show client info on 'card-half-left') 
-                from edan's wk3 challenge feedback... */}
-            {/* <div className={updateClicked ? "card-half-left-inputs" : "card-half-left"}> */}
             {updateClicked ? 
             <div className="card-half-left-inputs"> 
                 <input type="text"
-                placeholder={client.full_name}
+                // placeholder={clientInfo.full_name}
                 value={full_name}
                 onChange={(event) => setFullName(event.target.value)}
                 />
                 <input type="text"
-                placeholder={client.address}
+                // placeholder={client.address}
                 value={address}
                 onChange={(event) => setAddress(event.target.value)}
                 />
                 <input type="text"
-                placeholder={client.city}
+                // placeholder={client.city}
                 value={city}
                 onChange={(event) => setCity(event.target.value)}
                 />
                 <input type="text"
-                placeholder={client.state}
+                // placeholder={client.state}
                 value={state}
                 onChange={(event) => setState(event.target.value)}
                 />
                 <input type="text"
-                placeholder={client.zip_code}
+                // placeholder={client.zip_code}
                 value={zip_code}
                 onChange={(event) => setZipCode(event.target.value)}
                 />
                 <input type="text"
-                placeholder={client.phone}
+                // placeholder={client.phone}
                 value={phone}
                 onChange={(event) => setPhone(event.target.value)}
                 />
                 <input type="text"
-                placeholder={client.email}
+                // placeholder={client.email}
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 />
@@ -121,27 +126,17 @@ function Profile(props){ //props here to get specific client id? params? redux?
             </div> 
             :
             <div className="card-half-left"> 
-                {/* how do I render the specific client's info? props? redux?*/}
-                <h2>Willow Rosa Lee </h2>
-                {/* <p>{props.client.full_name}</p> */}
-                <p>234 Garden St.</p>
-                {/* <p>{props.client.address}</p> */}
-                <p>City, </p>
-                {/* <p>{props.client.city} </p> */}
-                <p>State, </p>
-                {/* <p>{props.client.state} </p> */}
-                <p>Zip </p>
-                {/* <p>{props.client.zip_code}</p> */}
-                <p>808-345-6789</p>
-                {/* <p>{props.client.phone}</p> */}
-                <p>plantLove@gmail.com</p>
-                {/* <p>{props.client.email}</p> */}
+                <h2>{clientInfo.full_name}</h2>
+                <p>{clientInfo.address}</p>
+                <p>{clientInfo.city}</p>
+                <p>{clientInfo.state}</p>
+                <p>{clientInfo.zip_code}</p>
+                <p>{clientInfo.phone}</p>
+                <p>{clientInfo.email}</p>
 
-                {/* onClick renders to editable input feilds for client info and submit button, on click of submit renders back to updated info view */}
+                {/* onClick renders to editable input feilds for client info and submit button */}
                 <button className="a2o-btn" onClick={renderToInputs}>Update Info</button>
             </div>}
-            {/* this div closes the conditional rendering div */}
-            {/* </div>   */}
             
             {/* specific client's appointment history list */}
             <div className="card-half-right">
