@@ -12,20 +12,23 @@ function AddNewAppt(){
     const dispatch = useDispatch();
 
     //instance of client redux store for name (currently also has appt info)
-    const client = useSelector((store) => store.client);
+    //const client = useSelector((store) => store.client);
+
+    //specific client's info store instance 
+    const clientInfo = useSelector((store) => store.clientInfo);
 
     //axios get (or useEffect dispatch to saga) to retrieve clients from DB
-    useEffect(() => {
-        dispatch({ type: 'FETCH_CLIENT' }); 
-        //dispatch({ type: 'FETCH_APPT' }); 
-    }, []);
+    // useEffect(() => {
+    //     dispatch({ type: 'FETCH_CLIENT' }); 
+    //     dispatch({ type: 'FETCH_APPT' }); 
+    // }, []);
 
     //sets local state for post request
     const [appt_name, setApptName] = useState('');
     const [date, setDate] = useState('');
     const [primary_concern, setPrimaryConcern] = useState('');
-    const [notes, setNotes] = useState('');
-    const [summary, setSummary] = useState('');
+    // const [notes, setNotes] = useState('');
+    // const [summary, setSummary] = useState('');
 
     //POST route to submit new appointment information
     const addNewAppt = () => {
@@ -37,12 +40,12 @@ function AddNewAppt(){
               }
             })
         } else {
-            axios.post(`/api/info/AddAppt`, ///${id} do I use id here instead of adding it to the object? 
+            axios.post(`/api/info/AddAppt/${clientInfo.id}`, // action.payload? or clientInfo.id? double check if this is correct
             {
                 appt_name: appt_name,
                 date: date,
                 primary_concern: primary_concern,
-                client_id: client.id,
+                client_id: clientInfo.id,
             }
             ).then((response) => {
                 console.log('back from new appt POST', response.data);
@@ -69,13 +72,12 @@ function AddNewAppt(){
     }//end goBack
 
     return(
-        <div>
+        <div className="card-whole">
             <form id="appt-form" onSubmit={addNewAppt}>
+                {/* {JSON.stringify(clientInfo)} */}
                 <h3>Adding New Appointment For:</h3>
-                {JSON.stringify(client)}
-                <p>Willow Rosa Lee (redux - table row id)</p>
-                {/* do I need to map here to get name to render? How do I just get one to show up? */}
-                <p>{client.full_name}</p>
+                <h2>{clientInfo.full_name}</h2>
+                <br/>
                 <input type="text"
                     placeholder="Appointment Name" 
                     value={appt_name}
@@ -93,16 +95,6 @@ function AddNewAppt(){
                     value={primary_concern}
                     onChange={(event) => setPrimaryConcern(event.target.value)}
                 />
-                <input type="text"
-                    placeholder="Notes"
-                    value={notes}
-                    onChange={(event) => setNotes(event.target.value)}
-                />
-                <input type="text"
-                    placeholder="Summary"
-                    value={summary}
-                    onChange={(event) => setSummary(event.target.value)}
-                />
                 <br />
                 <input className="a2o-btn" type="submit" name="submit" value="Submit" />
                 <br />
@@ -115,3 +107,14 @@ function AddNewAppt(){
 }
 
 export default AddNewAppt;
+
+{/* <input type="text"
+    placeholder="Notes"
+    value={notes}
+    onChange={(event) => setNotes(event.target.value)}
+/>
+<input type="text"
+    placeholder="Summary"
+    value={summary}
+    onChange={(event) => setSummary(event.target.value)}
+/> */}
