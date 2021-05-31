@@ -4,6 +4,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import clientSaga from './client.saga';
 import apptSaga from './appt.saga';
+import editClientSaga from './editClient.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -19,5 +20,6 @@ export default function* rootSaga() {
     userSaga(),
     clientSaga(), //should this be here? yeild takeEvery in client.saga
     apptSaga(), //should this be here? yeild takeEvery in appt.saga
+    editClientSaga(), //should this be here? yeild takeEvery in clientInfo.saga
   ]);
 }
