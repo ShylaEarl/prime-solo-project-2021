@@ -35,7 +35,7 @@
         - [x] alert user if input is not valid w sweet alert
         - [x] add sweet alert to notify of successful POST
 - [x] write POST endpoint on sever
-    - [] add server side validation? only full_name is validated on client...
+    - [] add server side validation? 
     - [x] test route in Postman
     - [x] route adding data to DB!
 - [x] Grid-responsive page styling
@@ -43,8 +43,7 @@
 ### CSS grid template/Responsive styling (worked on T 5.25.21 & W 5.26.21)
 - [x] header rendering from App across all views
 - [x] navbar rendering from App across all views
-    - [] create all links for nav
-    - [] change 'Logout' button to link in nav
+    - [x] create all links for nav
 - [x] main rendering from App across all views
 
 ### Client Table 1.2 (W 5.26.21)
@@ -52,11 +51,11 @@
     - [x] with sql JOINS query
 - [x] create client saga & reducer
 - [x] create appointment saga & reducer
-- [x] map appt info array to DOM/table (currently also includes client data)
+- [x] map client info array to DOM/table 
 - [x] add 'Add Appt' button
-    - [] add functionality - route to Add New Appointment page /new-appt
+    - [x] add functionality - route to Add New Appointment page 
 - [x] add 'Edit' button
-    - [] add functionality - route to Client Profile page /client-profile
+    - [x] add functionality - route to Client Profile page 
 - [x] add 'Delete' button
     - [x] add functionality
         - [x] write delete route endpoint on server
@@ -65,27 +64,27 @@
         - [x] rerender DOM/remove table row
 - [x] table css
     - [] make it responsive!
-- [] navbar? This is the first view it appears in. 
+- [x] navbar
 
 ### Client Profile 1.4 (TH 5.27.21)
-- [] GET route to display client appointment history on DOM
-    - [] add links and icons to rows if date is current/past
-    - [] route to Appointment Notes page 1.6 if current
-    - [] route to Appointment Details page 1.7 if past date
-- [] GET route to display client information on DOM
-- [] add 'Update Info' button
-    - [] add functionality
-        - [] conditionally render view to editable input feilds when clicked on
-        - [] add 'Submit' button on this view
+- [x] dynamically display client information on DOM
+- [x] add 'Update Info' button
+    - [x] add functionality
+        - [x] conditionally render view to editable input feilds when clicked on
+        - [x] add 'Submit' button on this view
             - [] add functionality 
             - [] add PUT route
             - [] when 'Submit' clicked, renders to client profile view with updated information and 'Update Info' button
+- [] dynamically display client appointment history on DOM
+    - [] add links and icons to rows if date is current/past
+    - [] route to Appointment Notes page 1.6 if current
+    - [] route to Appointment Details page 1.7 if past date
 
-### Add New Appointment 1.5 (TH 5.27.21)
+### Add New Appointment 1.5 
 
-### Appointment Notes 1.6 (TH 5.27.21)
+### Appointment Notes 1.6 
 
-### Details Page 1.7 (TH 5.27.21)
+### Appointment Details Page 1.7 
 
 
 

@@ -98,8 +98,22 @@ router.post('/AddAppt', rejectUnauthenticated, (req, res) => {
 //   res.sendStatus(400);
 
 //MVP PUT route to edit client information 
-router.put('/:id', rejectUnauthenticated, (req, res) => {
-  const query = `UPDATE `
+//`/Profile/${action.payload.id}`
+router.put('/Profile/:id', rejectUnauthenticated, (req, res) => {
+  console.log('post id:', req.params.id);
+  console.log('post update body:', req.body);
+  
+  const query = `UPDATE "client" SET full_name=$2, address=$3, city=$4, 
+      state=$5, zip_code=$6, phone=$7, email=$8 WHERE id=$1;`;
+  pool.query(query, [req.params.id, req.body.full_name, req.body.address, req.body.city,
+      req.body.state, req.body.zip_code, req.body.phone, req.body.email])
+  .then(response => {
+    res.sendStatus(200);
+  }).catch(error => {
+    console.log('Error updating client in server:', error);
+    res.sendStatus(500)
+  })
+
 });
 
 //DELETE route to delete a client (base mode) 
