@@ -5,11 +5,16 @@ const {
 const pool = require('../modules/pool');
 const router = express.Router();
 
+//first get attempt for table to get client and last appointment info
+//returns only clients with appointments, where I need all clients returned...
+// `SELECT * FROM "appointment"
+//     JOIN "client" ON client.id=appointment.client_id;`
+
 //MVP GET route to get all clients from DB/server to client reducer/client table
 router.get('/', (req, res) => {
 
   //returns all client info to reducer
-  const query = `SELECT * FROM "client";`;
+  const query = `SELECT * FROM "client" ORDER BY "full_name" ASC;`;
   pool.query(query)
   .then(result => {
     res.send(result.rows);
@@ -21,33 +26,23 @@ router.get('/', (req, res) => {
 
 });//end client GET route
 
-// `SELECT * FROM "appointment"
-//     JOIN "client" ON client.id=appointment.client_id;`
+//SELECT * FROM "appointment" WHERE client_id = $1;
 
-//get all clients (and appointments?) from the DB (for client table)
-// router.get('/', (req, res) => {
-
-//   const clientQuery = `SELECT * FROM "client";`;
-//   pool.query(clientQuery)
+// //get a specific client's appointment info from the server/DB (for profile page/appt details page)
+// router.get('/Profile/:id', (req, res) => { //do I need to add /Profile here? to route data to profile page rather than table page?
+//   console.log('get appt via client id:', req.params.id);
+  
+//   const query = `SELECT * FROM "appointment" WHERE client_id = $1;`;
+//   pool.query(query, [req.params.id])
 //   .then(result => {
 //     res.send(result.rows);
-//     //add second query for appt info based on client id? or JOINs? here
-//     const apptQuery = `SELECT * FROM "appointment";`; //WHERE client_id = $1
-//     pool.query(apptQuery)
-//     .then(result => {
-//       res.send(result.rows);
-//     }).catch(error => {
-//       console.log('in GET', error);
-//       res.sendStatus(500)
-//     }) 
-    
-//   }) //catch for first query
+//   })
 //   .catch(error => {
 //     console.log('Error client GET', error);
 //     res.sendStatus(500)
 //   })
 
-// });
+// });//end specific client's appointment GET route
 
 //MVP POST route to add new client to DB/server  
 router.post('/', rejectUnauthenticated, (req, res) => {
@@ -130,3 +125,29 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 }); //end DELETE route
 
 module.exports = router;
+
+
+//get a specific client's appointment info from the server/DB (for profile page/appt details page)
+// router.get('/:id', (req, res) => {
+
+//   const query = `SELECT * FROM "appointment" WHERE client_id = $1;`;
+//   pool.query(query)
+//   .then(result => {
+//     res.send(result.rows);
+//     //add second query for appt info based on client id? or JOINs? here
+//     const apptQuery = `SELECT * FROM "appointment";`; //WHERE client_id = $1
+//     pool.query(apptQuery)
+//     .then(result => {
+//       res.send(result.rows);
+//     }).catch(error => {
+//       console.log('in GET', error);
+//       res.sendStatus(500)
+//     }) 
+    
+//   }) //catch for first query
+//   .catch(error => {
+//     console.log('Error client GET', error);
+//     res.sendStatus(500)
+//   })
+
+// });

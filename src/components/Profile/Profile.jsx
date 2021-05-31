@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 //import axios from 'axios';
 
 function Profile(){ 
+
+    //grabs dynamic part of URL, client id, 
+    //figure out how to use this for rendering with updated info
+    //also should this be used for fetching specific clients appt info?
+    //or clientInfo.id that is in the reducer?
+    let {id} = useParams();
+    console.log(id);
 
     const [updateClicked, setupdateClicked] = useState(false);
 
@@ -18,27 +25,22 @@ function Profile(){
 
     //functionality to route to a page
     const history = useHistory();
-
-    //whole store
-    //const store = useSelector((store) => store);
-
-    //client store instance 
-    //const client = useSelector((store) => store.client);
     
     //clientInfo store instance 
     const clientInfo = useSelector((store) => store.clientInfo);
-    
+    console.log(clientInfo.id);
+
     //appointment store instance currently holds all appt info and client info
     const appt = useSelector((store) => store.appt);
+    console.log(appt);
 
     //functionality to dispatch information to a saga or reducer
     const dispatch = useDispatch();
   
-    //axios get (or useEffect dispatch to saga) to retrieve clients from DB
-    // useEffect(() => {
-    //     dispatch({ type: 'FETCH_CLIENT' }); 
-    //     dispatch({ type: 'FETCH_APPT' }); 
-    // }, []);
+    //on page load, retrieve this client's appts from server/DB
+    useEffect(() => {
+        dispatch({ type: 'FETCH_APPT', payload: clientInfo.id }); 
+    }, []);
 
     //PUT route to update client information
     const updateClientInfo = () => { 
@@ -86,6 +88,7 @@ function Profile(){
 
     }
 
+    //routes to add new appt page with client's id
     const routeToAddAppt = (id) => {
         console.log("routing to add appt with id:", id);
         history.push('/AddAppt');
@@ -142,12 +145,13 @@ function Profile(){
                 <p>{clientInfo.email}</p>
 
                 {/* onClick renders to editable input feilds for client info and submit button */}
-                <button className="a2o-btn" onClick={renderToInputs}>Update Info</button>
+                <button className="a2o-btn" onClick={renderToInputs}>Update Client Info</button>
                 <button className="a2o-btn" onClick={() => routeToAddAppt(clientInfo.id)}>Add Appointment</button>
             </div>}
             
             {/* specific client's appointment history list */}
             <div className="card-half-right">
+                {JSON.stringify(appt)}
                 <h3>Appointment History</h3>
                 <ul>
                 {/* font awesome leaf icon for li - still need to install */}

@@ -48,7 +48,7 @@
 
 ### Client Table 1.2 (W 5.26.21)
 - [x] write GET route endpoint on server
-    - [x] with sql JOINS query
+    - [] with sql JOINS query to get latest appt info
 - [x] create client saga & reducer
 - [x] create appointment saga & reducer
 - [x] map client info array to DOM/table 
@@ -72,17 +72,31 @@
     - [x] add functionality
         - [x] conditionally render view to editable input feilds when clicked on
         - [x] add 'Submit' button on this view
-            - [] add functionality 
-            - [] add PUT route
-            - [] when 'Submit' clicked, renders to client profile view with updated information and 'Update Info' button
+            - [x] add functionality 
+            - [x] add PUT route
+            - [] when 'Submit' clicked, renders to client profile view with updated information and 'Update Info' button (useParams?)
+- [x] add 'Add Appointment' button
+    - [x] add functionality by routing to add appt page
 - [] dynamically display client appointment history on DOM
     - [] add links and icons to rows if date is current/past
     - [] route to Appointment Notes page 1.6 if current
     - [] route to Appointment Details page 1.7 if past date
 
 ### Add New Appointment 1.5 
+- [x] create clientInfo store to access specific client's info to add appt to
+- [x] add input fields for appt name, date, primary concern
+- [x] add state to hold values to be POSTED to DB
+- [x] add submit button
+    - [x] add functionality (POST route)
+    - [x] add validation (input and successful post)
+    - [x] route to client profile page
+- [x] add POST route end point on server
+- [x] add cancel button
+    - [x] add functionality (route back to client table)
 
 ### Appointment Notes 1.6 
+- [] PUT route for updating appointment table 'notes' and 'summary' columns
+- [] POST route for creating remedies in remedy table
 
 ### Appointment Details Page 1.7 
 

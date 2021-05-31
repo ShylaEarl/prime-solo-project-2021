@@ -27,10 +27,8 @@ function AddNewAppt(){
     const [appt_name, setApptName] = useState('');
     const [date, setDate] = useState('');
     const [primary_concern, setPrimaryConcern] = useState('');
-    // const [notes, setNotes] = useState('');
-    // const [summary, setSummary] = useState('');
 
-    //POST route to submit new appointment information
+    //POST route to submit new appointment information TODO - move to saga
     const addNewAppt = () => {
         if( appt_name == '' || date == '' || primary_concern == ''){
             swal({
@@ -40,7 +38,7 @@ function AddNewAppt(){
               }
             })
         } else {
-            axios.post(`/api/info/AddAppt/${clientInfo.id}`, // action.payload? or clientInfo.id? double check if this is correct
+            axios.post(`/api/info/AddAppt/${clientInfo.id}`, 
             {
                 appt_name: appt_name,
                 date: date,
@@ -54,10 +52,6 @@ function AddNewAppt(){
                   text: "The new appointment has been submitted!",
                   icon: "success"
                 });
-                //clear input fields
-                setApptName('');
-                setDate('');
-                setPrimaryConcern('');
                 //route to 
                 history.push('/Profile');
             }).catch((error) => {
@@ -77,7 +71,7 @@ function AddNewAppt(){
                 {/* {JSON.stringify(clientInfo)} */}
                 <h3>Adding New Appointment For:</h3>
                 <h2>{clientInfo.full_name}</h2>
-                <br/>
+                <br />
                 <input type="text"
                     placeholder="Appointment Name" 
                     value={appt_name}
@@ -107,6 +101,9 @@ function AddNewAppt(){
 }
 
 export default AddNewAppt;
+
+// const [notes, setNotes] = useState('');
+// const [summary, setSummary] = useState('');
 
 {/* <input type="text"
     placeholder="Notes"
