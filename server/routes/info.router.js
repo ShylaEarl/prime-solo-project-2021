@@ -11,7 +11,7 @@ const router = express.Router();
 //     JOIN "client" ON client.id=appointment.client_id;`
 
 //MVP GET route to get all clients from DB/server to client reducer/client table
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
 
   //returns all client info to reducer
   const query = `SELECT * FROM "client" ORDER BY "full_name" ASC;`;
@@ -67,10 +67,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 }); //end add new client POST route
 
-//POST route to add new appointment ***May need to add :id here...
-//double check route/ do I need ${id} / move to new router?
+//POST route to add new appointment for a specific client (should this move to it's own router file?)
 router.post('/AddAppt/:id', rejectUnauthenticated, (req, res) => {
-  //how do I capture the client id and add it to the query?
+  
   const client_id = req.params.id; 
   const query = `INSERT INTO "appointment" ("appt_name", "date", "primary_concern", 
       "notes", "summary", "client_id") VALUES ($1, $2, $3, $4, $5, $6);`;

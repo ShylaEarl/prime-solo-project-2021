@@ -6,7 +6,7 @@ import './AddNewClient.css'
 
 function addNewClient() {
 
-  //functionality to dispatch information to a saga or reducer
+  //functionality to dispatch information to a saga and reducer
   //const dispatch = useDispatch();
 
   //functionality to route to a page
@@ -21,7 +21,7 @@ function addNewClient() {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
 
-  //collects local state info, bundles it as an object and POSTs to DB
+  //collects local state info, bundles it as an object and POSTs to DB (move to saga eventually...)
   const addNewClient = () => {
     //input validation and alert
     if(full_name == '' || address == '' || city == '' || state == '' ||
@@ -50,16 +50,8 @@ function addNewClient() {
           text: "Your new client has been submitted!",
           icon: "success"
         });
-        //clear input feilds
-        setFullName('');
-        setAddress('');
-        setCity('');
-        setState('');
-        setZipCode('');
-        setPhone('');
-        setEmail('');
-        //route to client profile page 
-        history.push('/Profile');
+        //route to NEW client's profile page 
+        history.push('/Profile'); //add id param here. also add in router?
       }).catch((error) => {
         console.log('error in new client POST', error);
       });
@@ -78,7 +70,7 @@ function addNewClient() {
         <img src=" " alt="illustrated oak leaf"/>
       </div> */}
       
-      <form id="client-form" onSubmit={addNewClient}>
+      <form className="input-form" onSubmit={addNewClient}>
         <h3>New Client Information</h3>
         <input type="text"
           placeholder="Client Name"
@@ -128,3 +120,12 @@ function addNewClient() {
 }
 
 export default addNewClient;
+
+// //clear input feilds
+// setFullName('');
+// setAddress('');
+// setCity('');
+// setState('');
+// setZipCode('');
+// setPhone('');
+// setEmail('');

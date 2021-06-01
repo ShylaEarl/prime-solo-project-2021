@@ -49,11 +49,11 @@ function AddNewAppt(){
                 console.log('back from new appt POST', response.data);
                 //swal success indicator
                 swal({
-                  text: "The new appointment has been submitted!",
+                  text: "Your appointment has been created!",
                   icon: "success"
                 });
                 //route to 
-                history.push('/Profile');
+                history.push('/Profile'); //add id param to stay on specific client's page
             }).catch((error) => {
                 console.log('error in new appointment POST', error);
             });
@@ -62,18 +62,18 @@ function AddNewAppt(){
 
     //clicking cancel btn routes back to Client Table (/user)
     const goBack = () => {
-        history.push('/user');
+        history.push('/Profile');
     }//end goBack
 
     return(
         <div className="card-whole">
-            <form id="appt-form" onSubmit={addNewAppt}>
+            <form className="input-form" onSubmit={addNewAppt}>
                 {/* {JSON.stringify(clientInfo)} */}
-                <h3>Adding New Appointment For:</h3>
+                <h3>Adding New Consultation For:</h3>
                 <h2>{clientInfo.full_name}</h2>
                 <br />
                 <input type="text"
-                    placeholder="Appointment Name" 
+                    placeholder="Consultation Name" 
                     value={appt_name}
                     onChange={(event) => setApptName(event.target.value)}
                 />
