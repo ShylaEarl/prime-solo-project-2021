@@ -63,7 +63,7 @@ function Profile(){
         
         //swal success indicator
         swal({
-            text: "Your updated client information has been submitted!",
+            text: "Your client's information has been updated!",
             icon: "success"
         });
 
@@ -88,6 +88,10 @@ function Profile(){
 
     }
 
+    const renderToInfo = () => {
+        setupdateClicked(false);
+    }
+
     //routes to add new appt page with client's id
     const routeToAddAppt = (id) => {
         console.log("routing to add appt with id:", id);
@@ -100,10 +104,16 @@ function Profile(){
         history.push('/ApptDetails');
     }
 
+    //clicking back btn routes back to Client Table (/user)
+    const goBack = () => {
+        history.push('/user');
+    }//end goBack
+
     return(
         <div className="card-whole">
             {updateClicked ? 
-            <div className="card-half-left-inputs"> 
+            <div className="input-form"> 
+            {/* className="card-half-left-inputs" */}
                 <input type="text"
                 value={full_name}
                 onChange={(event) => setFullName(event.target.value)}
@@ -132,21 +142,21 @@ function Profile(){
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 />
-                <button className="a2o-btn" onClick={updateClientInfo}>Submit</button>
+                <button className="a2o-btn" onClick={updateClientInfo}>Update</button>
+                <button className="a2o-btn" onClick={renderToInfo}>Cancel</button>
             </div> 
             :
             <div className="card-half-left"> 
                 <h2>{clientInfo.full_name}</h2>
                 <p>{clientInfo.address}</p>
-                <p>{clientInfo.city}</p>
-                <p>{clientInfo.state}</p>
-                <p>{clientInfo.zip_code}</p>
+                <p>{clientInfo.city}, {clientInfo.state}, {clientInfo.zip_code}</p>
                 <p>{clientInfo.phone}</p>
                 <p>{clientInfo.email}</p>
 
                 {/* onClick renders to editable input feilds for client info and submit button */}
                 <button className="a2o-btn" onClick={renderToInputs}>Update Client Info</button>
-                <button className="a2o-btn" onClick={() => routeToAddAppt(clientInfo.id)}>Add Appointment</button>
+                <button className="a2o-btn" onClick={() => routeToAddAppt(clientInfo.id)}>Add Consultation</button>
+                <button className="a2o-btn" onClick={goBack}>Back to Table</button>
             </div>}
             
             {/* specific client's appointment history list */}

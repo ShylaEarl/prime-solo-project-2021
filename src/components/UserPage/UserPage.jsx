@@ -1,22 +1,21 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './UserPage.css'
 
 function UserPage() {
 
+  let {id} = useParams();
+  console.log(id);
+
   //functionality to route to a page
   const history = useHistory();
-
-  //whole store
-  //const store = useSelector((store) => store);
   
-  //client store instance 
+  //client store instance holds all clients' info (eventually rename to clientList)
   const client = useSelector((store) => store.client);
   
-  //appointment store instance currently holds all appt info and client info
-  const appt = useSelector((store) => store.appt);
+  //create store/reducer to hold last appt for each client...
 
   //functionality to dispatch information to a saga or reducer
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ function UserPage() {
   //axios get (or useEffect dispatch to saga) to retrieve clients from DB
   useEffect(() => {
     dispatch({ type: 'FETCH_CLIENT' }); 
-    dispatch({ type: 'FETCH_APPT' }); 
+    //dispatch({ type: 'FETCH_APPT' }); //eventually this saga dispatch will access reducer holding last appt for each client
   }, []);
 
   //permanently deletes client from DB (Should this be moved to a saga?)
@@ -34,7 +33,7 @@ function UserPage() {
     axios.delete(`/api/info/${id}`)
     .then((response) => {
       console.log('delete request', response);
-      //get call replaced by useEffect
+      //get call replaced by useEffect to update client table
       dispatch({ type: 'FETCH_CLIENT' }); 
     })
     .catch((error) => {
@@ -47,7 +46,7 @@ function UserPage() {
     console.log('delete click! id =', id);
     swal({
         title: "Hello!",
-        text: "Are you sure you want to permanently delete this client?",
+        text: "Are you sure you want to PERMANENTLY delete this client?",
         buttons: {
           cancel: true,
           confirm: "Delete"
