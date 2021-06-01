@@ -15,7 +15,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => { //do I need to add /Pr
       res.send(result.rows);
     })
     .catch(error => {
-      console.log('Error client GET', error);
+      console.log('Error appointment GET', error);
       res.sendStatus(500)
     })
   

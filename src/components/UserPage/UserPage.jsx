@@ -15,7 +15,7 @@ function UserPage() {
   //client store instance holds all clients' info (eventually rename to clientList)
   const client = useSelector((store) => store.client);
   
-  //create store/reducer to hold last appt for each client...
+  //TODO - create store/reducer to hold last appt for each client...
 
   //functionality to dispatch information to a saga or reducer
   const dispatch = useDispatch();
@@ -65,14 +65,14 @@ function UserPage() {
   const routeToEdit = (event, item) => {
     console.log('edit clicked! client =', item);
     dispatch({ type: 'SET_CLIENT_INFO', payload: item})
-    history.push('/Profile');
+    history.push(`/Profile/${item.id}`);
   }
 
   //addConsult function on click, capture client id, send specific client info to client info reducer and route to add appt page
   const routeToAddConsult = (event, item) => {
     console.log('add clicked! client =', item);
     dispatch({ type: 'SET_CLIENT_INFO', payload: item})
-    history.push('/AddAppt');
+    history.push(`/AddAppt/${item.id}`);
   }
   
   return (

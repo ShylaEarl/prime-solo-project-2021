@@ -11,9 +11,6 @@ function AddNewAppt(){
     //functionality to dispatch information to a saga or reducer
     const dispatch = useDispatch();
 
-    //instance of client redux store for name (currently also has appt info)
-    //const client = useSelector((store) => store.client);
-
     //specific client's info store instance 
     const clientInfo = useSelector((store) => store.clientInfo);
 

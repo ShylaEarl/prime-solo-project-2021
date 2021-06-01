@@ -80,14 +80,14 @@ function App() {
           <ProtectedRoute 
             // logged in shows Profile page else shows LoginPage
             exact
-            path="/Profile">
+            path="/Profile/:id">
             <Profile />
           </ProtectedRoute>
 
           <ProtectedRoute
             // logged in shows AddNewAppt page else shows LoginPage
             exact
-            path="/AddAppt">
+            path="/AddAppt/:id">
             <AddNewAppt />
           </ProtectedRoute>
 
