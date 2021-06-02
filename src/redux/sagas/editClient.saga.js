@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects'; //takeLatest
 
+//TODO - possibly move this whole file into client.saga...
+
 function* updateClient(action) {
     console.log('in edit saga', action.payload);
     try{

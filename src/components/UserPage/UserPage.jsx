@@ -65,14 +65,14 @@ function UserPage() {
   const routeToEdit = (event, item) => {
     console.log('edit clicked! client =', item);
     dispatch({ type: 'SET_CLIENT_INFO', payload: item})
-    history.push(`/Profile/${item.id}`); //${item.id}
+    history.push(`/Profile/${item.id}`); //${id} to useParams? item.id uses client's id from their row
   }
 
   //addConsult function on click, capture client id, send specific client info to client info reducer and route to add appt page
   const routeToAddConsult = (event, item) => {
     console.log('add clicked! client =', item);
     dispatch({ type: 'SET_CLIENT_INFO', payload: item})
-    history.push(`/AddAppt/${item.id}`); //${item.id}
+    history.push(`/AddAppt/${item.id}`); //${id} to useParams? item.id uses client's id from their row
   }
   
   return (

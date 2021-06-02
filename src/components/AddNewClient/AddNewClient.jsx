@@ -32,6 +32,8 @@ function addNewClient() {
           ok: true,
         }
       })
+      //create const cleint info = {object} here to send
+      //dispatch({ type: add_client payload: client info})
     } else {
       axios.post('/api/info', 
         {
