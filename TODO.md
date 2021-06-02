@@ -77,7 +77,7 @@
             - [] when 'Submit' clicked, renders to client profile view with updated information and 'Update Info' button (useParams?)
 - [x] add 'Add Appointment' button
     - [x] add functionality by routing to add appt page
-- [] dynamically display client appointment history on DOM
+- [x] dynamically display client appointment history on DOM
     - [] add links and icons to rows if date is current/past
     - [] route to Appointment Notes page 1.6 if current
     - [] route to Appointment Details page 1.7 if past date

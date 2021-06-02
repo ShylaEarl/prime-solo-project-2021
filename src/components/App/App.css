@@ -139,8 +139,14 @@ Buttons & Links
 .a2o-btn {
   background-color: #EBCF5B;
   border-radius: 5px;
+  margin-left: 1rem;
   padding: .5rem;
 }
+
+/* .a2o-btn {
+    
+    display: inline;
+} */
 
 .a2o-btn:hover {
   background-color: #5E3D18;

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'; // useDispatch,
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'; 
+import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function AddNewAppt(){
+
+    // let {id} = useParams();
+    // console.log(id);
 
     //functionality to route to a page
     const history = useHistory();
@@ -16,7 +19,7 @@ function AddNewAppt(){
 
     //axios get (or useEffect dispatch to saga) to retrieve clients from DB
     // useEffect(() => {
-    //     dispatch({ type: 'FETCH_CLIENT' }); 
+    //     dispatch({ type: 'FETCH_CLIENT' }); //add payload: id once activated params
     //     dispatch({ type: 'FETCH_APPT' }); 
     // }, []);
 
@@ -35,12 +38,12 @@ function AddNewAppt(){
               }
             })
         } else {
-            axios.post(`/api/info/AddAppt/${clientInfo.id}`, 
+            axios.post(`/api/info/AddAppt/${clientInfo.id}`, //change to id once activated params
             {
                 appt_name: appt_name,
                 date: date,
                 primary_concern: primary_concern,
-                client_id: clientInfo.id,
+                client_id: clientInfo.id, //change to id once activated params
             }
             ).then((response) => {
                 console.log('back from new appt POST', response.data);
@@ -50,7 +53,7 @@ function AddNewAppt(){
                   icon: "success"
                 });
                 //route to 
-                history.push('/Profile'); //add id param to stay on specific client's page
+                history.push(`/Profile/${clientInfo.id}`); //change to id once activated params
             }).catch((error) => {
                 console.log('error in new appointment POST', error);
             });
@@ -59,7 +62,7 @@ function AddNewAppt(){
 
     //clicking cancel btn routes back to Client Table (/user)
     const goBack = () => {
-        history.push('/Profile');
+        history.push(`/Profile/${clientInfo.id}`); //change to id once activated params
     }//end goBack
 
     return(
@@ -68,6 +71,7 @@ function AddNewAppt(){
                 {/* {JSON.stringify(clientInfo)} */}
                 <h3>Adding New Consultation For:</h3>
                 <h2>{clientInfo.full_name}</h2>
+                {/* //change to id once activated params */}
                 <br />
                 <input type="text"
                     placeholder="Consultation Name" 
@@ -88,8 +92,6 @@ function AddNewAppt(){
                 />
                 <br />
                 <input className="a2o-btn" type="submit" name="submit" value="Submit" />
-                <br />
-                <p>Clicking submit routes to Client Profile page</p>
                 <br />
                 <button className="a2o-btn" onClick={goBack}>Cancel</button>
             </form>

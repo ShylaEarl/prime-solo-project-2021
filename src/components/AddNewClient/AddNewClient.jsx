@@ -51,7 +51,7 @@ function addNewClient() {
           icon: "success"
         });
         //route to NEW client's profile page 
-        history.push('/Profile'); //add id param here. also add in router?
+        history.push('/user'); //`/Profile/${???}` add id param here. also add in router?
       }).catch((error) => {
         console.log('error in new client POST', error);
       });
