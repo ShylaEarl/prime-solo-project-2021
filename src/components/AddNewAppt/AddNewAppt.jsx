@@ -99,9 +99,8 @@ function AddNewAppt(){
                     onChange={(event) => setPrimaryConcern(event.target.value)}
                 />
                 <br />
-                <input className="a2o-btn" type="submit" name="submit" value="Submit" />
-                <br />
                 <button className="a2o-btn" onClick={goBack}>Cancel</button>
+                <input className="a2o-btn" type="submit" name="submit" value="Submit" />
             </form>
         </div>
     );

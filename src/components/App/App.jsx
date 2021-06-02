@@ -94,7 +94,7 @@ function App() {
           <ProtectedRoute
             // logged in shows ApptNotes page else shows LoginPage
             exact
-            path="/ApptNotes/:id">
+            path="/ApptNotes">
             <ApptNotes />
           </ProtectedRoute>
 
