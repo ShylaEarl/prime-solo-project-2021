@@ -26,11 +26,12 @@ function AddNewAppt(){
     //sets local state for post request
     const [appt_name, setApptName] = useState('');
     const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
     const [primary_concern, setPrimaryConcern] = useState('');
 
     //POST route to submit new appointment information TODO - move to saga
     const addNewAppt = () => {
-        if( appt_name == '' || date == '' || primary_concern == ''){
+        if( appt_name == '' || date == '' || time == '' || primary_concern == ''){
             swal({
               text: 'Please fill all fields!',
               buttons: {
@@ -42,6 +43,7 @@ function AddNewAppt(){
             {
                 appt_name: appt_name,
                 date: date,
+                time: time,
                 primary_concern: primary_concern,
                 client_id: clientInfo.id, //change to id once activated params
             }
@@ -83,6 +85,12 @@ function AddNewAppt(){
                     placeholder="Appointment Date"
                     value={date}
                     onChange={(event) => setDate(event.target.value)}
+                />
+                <br />
+                <input type="text"
+                    placeholder="Appointment Time"
+                    value={time}
+                    onChange={(event) => setTime(event.target.value)}
                 />
                 <br />
                 <input type="text"

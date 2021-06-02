@@ -44,13 +44,13 @@ function addNewClient() {
           email: email,
         }
       ).then((response) => {
-        console.log('back from new client POST', response.data);
+        //console.log('back from new client POST', response.data);
         //swal success indicator
         swal({
           text: "Your new client has been submitted!",
           icon: "success"
         });
-        //route to NEW client's profile page 
+        //currently routing to client table. could route to NEW client's profile page 
         history.push('/user'); //`/Profile/${???}` add id param here. also add in router?
       }).catch((error) => {
         console.log('error in new client POST', error);

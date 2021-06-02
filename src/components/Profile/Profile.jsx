@@ -35,14 +35,14 @@ function Profile(){
   
     //on page load, retrieve this client's appts from server/DB
     useEffect(() => {
-        dispatch({ type: 'FETCH_APPT', payload: clientInfo.id }); //change to id for params
+        dispatch({ type: 'FETCH_APPT', payload: clientInfo.id  }); // clientInfo.id change to id for params
     }, []);
 
     //PUT route to update client information
     const updateClientInfo = () => { 
         
         const updatedClientInfo = {
-            id: clientInfo.id, //change to id to use params
+            id: clientInfo.id, // clientInfo.id change to id to use params
             full_name: full_name,
             address: address,
             city: city,
@@ -62,6 +62,8 @@ function Profile(){
             text: "Your client's information has been updated!",
             icon: "success"
         });
+
+        //can I dispatch here to get client's updated data?
 
         //editMode off
         setupdateClicked(false);
@@ -98,6 +100,7 @@ function Profile(){
     //temporary functionality to access ApptDetails page
     const apptDetails = (id) => {
         console.log('appt details clicked!', id); 
+        //dispatch appt to apptInfo reducer to hold OR using params get that specific appts details from DB/server
         history.push(`/ApptDetails/${id}`); //this id is the appointment's id being passed in from the row/item.id appt reducer
     }
 
@@ -170,11 +173,10 @@ function Profile(){
                             onClick={() => apptDetails(item.id)}
                         >
                             {item.date.slice(0,10)} {item.appt_name}
-                            {/* <button>View Details</button> */}
+                            {/* add conditional rendering to appt here depending on current date */}
                         </li>
                     )}
                 </ul>
-                {/* Appointment details also conditionally render depending on date */}
             </div>
         
         </div>
