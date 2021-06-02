@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects'; //takeLatest
 
-// worker Saga: will be fired on "FETCH_APPT" actions from client table page
+// worker Saga: will be fired on "FETCH_APPT" actions from client profile
 function* fetchAppt(action) {
   try {
     const appt = yield axios.get(`/api/profile/${action.payload}`); // /${id} double check route!
