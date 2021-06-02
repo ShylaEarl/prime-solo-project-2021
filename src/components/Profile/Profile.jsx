@@ -5,10 +5,6 @@ import { useHistory, useParams } from 'react-router-dom';
 
 function Profile(){ 
 
-    //grabs dynamic part of URL, client id, 
-    //figure out how to use this for rendering with updated info
-    //also should this be used for fetching specific clients appt info?
-    //or clientInfo.id that is in the reducer?
     let {id} = useParams();
     console.log(id);
 
@@ -30,7 +26,7 @@ function Profile(){
     const clientInfo = useSelector((store) => store.clientInfo);
     console.log(clientInfo.id);
 
-    //appointment store instance currently holds all appt info and client info
+    //appt store holds all appt info for a specific client via params id
     const appt = useSelector((store) => store.appt);
     console.log(appt);
 
@@ -39,14 +35,14 @@ function Profile(){
   
     //on page load, retrieve this client's appts from server/DB
     useEffect(() => {
-        dispatch({ type: 'FETCH_APPT', payload: clientInfo.id }); 
+        dispatch({ type: 'FETCH_APPT', payload: clientInfo.id }); //change to id for params
     }, []);
 
     //PUT route to update client information
     const updateClientInfo = () => { 
         
         const updatedClientInfo = {
-            id: clientInfo.id,
+            id: clientInfo.id, //change to id to use params
             full_name: full_name,
             address: address,
             city: city,
@@ -78,6 +74,7 @@ function Profile(){
         console.log('update', updateClicked);
 
         //set local state with client info from the clientInfo reducer
+        //change to id to use params instead of reducer
         setFullName(clientInfo.full_name);
         setAddress(clientInfo.address);
         setCity(clientInfo.city);
@@ -95,13 +92,13 @@ function Profile(){
     //routes to add new appt page with client's id
     const routeToAddAppt = (id) => {
         console.log("routing to add appt with id:", id);
-        history.push('/AddAppt');
+        history.push(`/AddAppt/${id}`);
     }
 
     //temporary functionality to access ApptDetails page
-    const apptDetails = () => {
-        console.log('appt details clicked!', );
-        history.push('/ApptDetails');
+    const apptDetails = (id) => {
+        console.log('appt details clicked!', id); 
+        history.push(`/ApptDetails/${id}`); //this id is the appointment's id being passed in from the row/item.id appt reducer
     }
 
     //clicking back btn routes back to Client Table (/user)
@@ -147,6 +144,7 @@ function Profile(){
             </div> 
             :
             <div className="card-half-left"> 
+            {/* change these to id rather than clientInfo to use params?  */}
                 <h2>{clientInfo.full_name}</h2>
                 <p>{clientInfo.address}</p>
                 <p>{clientInfo.city}, {clientInfo.state}, {clientInfo.zip_code}</p>
@@ -161,23 +159,21 @@ function Profile(){
             
             {/* specific client's appointment history list */}
             <div className="card-half-right">
-                {JSON.stringify(appt)}
+                {/* {JSON.stringify(appt)} */}
                 <h3>Appointment History</h3>
-                <ul>
                 {/* font awesome leaf icon for li - still need to install */}
                 <i class="fab fa-pagelines"></i>
-                <li className="li_asLink" onClick={apptDetails}>12/12/20 Winter Wellness</li>
-                </ul>
-
-                {/* code similar to Mary's lecture */}
-                {/* <ul>
+                {/* also install moment.js or something else so date looks normal on DOM */}
+                <ul>
                     {appt.map((item, i) => 
-                        <li key={i} onClick={() => apptDetails(item.id)}>
-                            {item.date}{item.appt_name}
-                            <button>View Details(can also make li a link)</button>
+                        <li key={i} className="li_asLink"
+                            onClick={() => apptDetails(item.id)}
+                        >
+                            {item.date.slice(0,10)} {item.appt_name}
+                            {/* <button>View Details</button> */}
                         </li>
                     )}
-                </ul> */}
+                </ul>
                 {/* Appointment details also conditionally render depending on date */}
             </div>
         

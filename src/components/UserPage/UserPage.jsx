@@ -20,13 +20,13 @@ function UserPage() {
   //functionality to dispatch information to a saga or reducer
   const dispatch = useDispatch();
   
-  //axios get (or useEffect dispatch to saga) to retrieve clients from DB
+  //axios get (or useEffect dispatch to saga) to retrieve all clients from DB
   useEffect(() => {
     dispatch({ type: 'FETCH_CLIENT' }); 
-    //dispatch({ type: 'FETCH_APPT' }); //eventually this saga dispatch will access reducer holding last appt for each client
+    //dispatch({ type: 'FETCH_LAST_APPT' }); //eventually this saga dispatch will access reducer holding last appt for each client
   }, []);
 
-  //permanently deletes client from DB (Should this be moved to a saga?)
+  //permanently deletes client from DB (TODO- eventually move to a saga)
   const deleteClient = (id) => {
     console.log('deleting client', id);
     //axios delete call to server on '/info' route
@@ -78,8 +78,6 @@ function UserPage() {
   return (
     <div className="card-whole">
       <h2>Acorn to Oak Clients</h2>
-      {/* {JSON.stringify(client)}  */}
-      
       <table>
         <thead>
           <tr>
@@ -91,10 +89,8 @@ function UserPage() {
             <th>Delete Client</th>
           </tr>
         </thead>
-        
         <tbody>
           {client.map((item, i) => 
-            
             <tr key={i}>
               <td>{item.full_name}</td>
               {/* <td>{item.appt_name}</td>
