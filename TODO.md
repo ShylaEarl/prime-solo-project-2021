@@ -99,13 +99,3 @@
 - [] POST route for creating remedies in remedy table
 
 ### Appointment Details Page 1.7 
-
-
-
-*** Code for adding date completed/current date timestamp, if needed ***
-Add the ability to record when a task was completed. Show the completed date on the frontend in a pretty format.
-
-We can do this directly in our SQL query, with the CURRENT_TIMESTAMP() function:
-
-INSERT INTO "tasks" ("name", "task", "date")
-VALUES ($1, $2, CURRENT_TIMESTAMP());

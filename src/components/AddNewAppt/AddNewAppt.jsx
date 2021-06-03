@@ -107,17 +107,3 @@ function AddNewAppt(){
 }
 
 export default AddNewAppt;
-
-// const [notes, setNotes] = useState('');
-// const [summary, setSummary] = useState('');
-
-{/* <input type="text"
-    placeholder="Notes"
-    value={notes}
-    onChange={(event) => setNotes(event.target.value)}
-/>
-<input type="text"
-    placeholder="Summary"
-    value={summary}
-    onChange={(event) => setSummary(event.target.value)}
-/> */}

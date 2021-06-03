@@ -14,7 +14,10 @@ function Profile(){
 
     //local state for conditional rendering by date for appts
     const [currentDate, setCurrentDate] = useState(new Date());
-    console.log(new Date());
+    console.log('current date as state:', currentDate);
+
+    let currentDate2 = new Date();
+    console.log('Date as let variable: ', currentDate2);
 
     //create and set local state for input updates
     const [full_name, setFullName] = useState('');
@@ -104,7 +107,7 @@ function Profile(){
         history.push(`/AddAppt/${id}`);
     }
 
-    //on click, capture appt id, send specific appt info to appt info reducer and route to appt details page
+    //PAST on click, capture appt id, send specific appt info to appt info reducer and route to appt details page
     const routeToApptDetails = (event, item) => {
         console.log('appt details clicked!', item); //specific appt's id and information
         dispatch({ type: 'SET_APPT_INFO', payload: item }); //currently attempting to use temp apptInfo reduce. Eventually use params get that specific appts details from DB/server
@@ -118,10 +121,13 @@ function Profile(){
     //     history.push(`/AddAppt/${item.id}`); //${item.id}
     // }
 
-    const apptNotes = (id) => {
-        history.push(`/ApptNotes/${id}`); //specific appt's id to add notes to
+    //PRESENT
+    const routeToApptNotes = (event, item) => {
+        dispatch({ type: 'SET_APPT_INFO', payload: item }); //currently attempting to use temp apptInfo reduce. Eventually use params get that specific appts details from DB/server
+        history.push(`/ApptNotes/${item.id}`); //specific appt's id to add notes to
     }
 
+    //FUTURE
     const apptEdit = (id) => {
         history.push(`/EditAppt/${id}`); //TODO - create this component and add route to App.jsx
     }
@@ -195,16 +201,54 @@ function Profile(){
                         //else if (currentDate > item.date) (appt already happened) show this <li key={i} className="li_asLink" onClick={() => routeToApptDetails(item.id)}>{moment(item.date).format('L')} {item.appt_name}</li>
                         //else (currentdate < item.date) (appt is in future) show this <li key={i} className="li_asLink" onClick={() => apptEdit(item.id)}>{moment(item.date).format('L')} {item.appt_name}</li>
                         <li key={i} className="li_asLink"
-                            onClick={(event) => routeToApptDetails(event, item)}
+                            onClick={(event) => routeToApptNotes(event, item)}
                         >
-                            {moment(item.date).format('L')} {item.appt_name}
+                        {moment(item.date).format('L')} {item.appt_name}
                         </li>
                     )}
                 </ul>
             </div>
-        
+                
+            <ul>
+                {appt.map((item, i) => {
+                    if(currentDate == item.date){ //today's date
+                        return <li key={i} className="li_asLink" 
+                         onClick={(event) => routeToApptNotes(event, item)}>
+                         {moment(item.date).format('L')} {item.appt_name}</li>
+                     } else { //past appointment
+                         return <li key={i} className="li_asLink" 
+                         onClick={(event) => routeToApptDetails(event, item)}>
+                         {moment(item.date).format('L')} {item.appt_name}</li>
+                     }
+                })}
+            </ul>
+            {/* if(currentDate == item.date) Present day route to notes
+                else if(currentDate > item.date) appt has happened route to details
+                else (currentDate < item.date) appt in the future route to edit appt details page to change date or delete appointment */}
         </div>
     );
 }
 
 export default Profile;
+
+// handleChange = (event) => {
+//     // inputDate is date selected by user in the box
+//     let inputDate = event.target.value;
+//     let inputYear = inputDate.slice(0,4);
+//     let inputMonth = inputDate.slice(5,7);
+//     let inputDateNumber = inputDate.slice(8,10);
+//     let inputDateToCheck = new Date(inputYear, inputMonth - 1, inputDateNumber);
+//     let currentDate = new Date();
+//     // check to make sure the date selected is not in the future
+//     // this one is for if they select a future date
+//     // it should be an error
+//     if (inputDateToCheck > currentDate) {
+//         alert('The date may not be in the future');
+//     }
+//     // otherwise save the date in local state
+//     else {   
+//         this.setState({
+//             date: inputDate
+//         })
+//     }
+// }
