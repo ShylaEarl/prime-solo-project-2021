@@ -70,6 +70,7 @@ function Profile(){
         });
 
         //can I dispatch here to get client's updated data?
+        // dispatch({ type: 'FETCH_UPDATED_CLIENT_INFO', payload: clientInfo.id });
 
         //editMode off
         setupdateClicked(false);
@@ -105,8 +106,8 @@ function Profile(){
 
     //on click, capture appt id, send specific appt info to appt info reducer and route to appt details page
     const routeToApptDetails = (event, item) => {
-        console.log('appt details clicked!', item); //specific appt's id
-        dispatch({ type: 'SET_APPT_INFO', payload: item }); //using params get that specific appts details from DB/server
+        console.log('appt details clicked!', item); //specific appt's id and information
+        dispatch({ type: 'SET_APPT_INFO', payload: item }); //currently attempting to use temp apptInfo reduce. Eventually use params get that specific appts details from DB/server
         history.push(`/ApptDetails/${item.id}`); //this id is the appointment's id being passed in from the row/item.id appt reducer. How do you switch it to be params?
     }
 
