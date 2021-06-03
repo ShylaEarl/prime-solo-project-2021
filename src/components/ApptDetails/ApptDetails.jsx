@@ -44,12 +44,11 @@ function ApptDetails(){
         <div className="card-whole">
             <h2>{clientInfo.full_name}</h2>
             <br />
-            <h2>{moment(apptInfo.date).format('L')}</h2>
-            <h2>{apptInfo.appt_name}</h2>
+            <h3>{moment(apptInfo.date).format('L')} {apptInfo.appt_name}</h3>
             <h4>Primary Concern:</h4>
-            {apptInfo.primary_concern}
+            <p>{apptInfo.primary_concern}</p>
             <h4>Summary:</h4>
-            {apptInfo.summary}
+            <p>{apptInfo.summary}</p>
             <h4>Suggested Remedies:</h4>
             {/* <ul>
                 {remedies.map((item, i) => 
