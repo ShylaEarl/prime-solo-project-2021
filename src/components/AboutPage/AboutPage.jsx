@@ -1,16 +1,27 @@
 import React from 'react';
-
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function AboutPage() {
+
+  const element = <FontAwesomeIcon icon={faStar} /> 
+
   return (
-    <div className="container">
-      <div>
-        <p>This about page is for anyone to read!</p>
-      </div>
+    <div className="card-whole">
+      <h2>Technologies Used:</h2>
+      <ul>
+        <li>{element} javaScript </li>
+        <li>{element} express </li>
+        <li>{element} node </li>
+        <li>{element} sql </li>
+        <li>{element} react </li>
+        <li>{element} redux </li>
+        <li>{element} hooks </li>
+        <li>{element} css grid </li>
+        <li>{element} moment.js </li>
+        <li>{element} font awesome </li>
+        <li>{element} a whole lotta love </li>
+      </ul>
     </div>
   );
 }

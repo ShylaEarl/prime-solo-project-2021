@@ -8,9 +8,8 @@ function ApptDetails(){
     let {id} = useParams();
     console.log('appt id:', id);
 
-    //TODO - 
-    // Make REMEDIES reducer/saga to fetch remedies from db
-    //create remedies store instance
+    //remedies store instance
+    const remedies = useSelector((store) => store.remedies);
 
     //clientInfo store instance 
     const clientInfo = useSelector((store) => store.clientInfo);
@@ -27,9 +26,8 @@ function ApptDetails(){
     useEffect(() => {
         //on page load, retrieve this appt's details from server/DB
         dispatch({ type: 'FETCH_APPT_INFO', payload: apptInfo.id  }); // apptInfo.id change to id for params
-        
-        //on page load, retrieve this appt's remedies from server/DB table remedies (appointment_id will match apptInfo.id)
-        //dispatch({ type: 'FETCH_REMEDIES', payload: ${apptInfo.id} }); //how do I get the remedies for a specific appt?
+        //on page load, retrieve this appt's remedies from server/DB (appointment_id will match apptInfo.id)
+        dispatch({ type: 'FETCH_REMEDIES', payload: apptInfo.id }); 
     }, []);
 
     //functionality to route to a page
@@ -37,7 +35,7 @@ function ApptDetails(){
 
     //clicking back button routes to client profile
     const goBack = () => {
-        history.push(`/Profile/${clientInfo.id}`); //how to do this since param is now appt id rather than client id...
+        history.push(`/Profile/${clientInfo.id}`);
     }//end goBack
 
     return(
@@ -50,14 +48,13 @@ function ApptDetails(){
             <h4>Summary:</h4>
             <p>{apptInfo.summary}</p>
             <h4>Suggested Remedies:</h4>
-            {/* <ul>
+            <ul>
                 {remedies.map((item, i) => 
                     <li key={i}>
-                        {remedies.name} {remedies.dose} {remedies.frequency}
+                        {item.name} {item.dose} {item.frequency}
                     </li>
                 )}
-            </ul> */}
-            {/* {remedies.map() but will need appt id to call back remedies associated with specific appt} */}
+            </ul>
             <button className="a2o-btn" onClick={goBack}>Back to {clientInfo.full_name}'s Profile</button>
         </div>
     );

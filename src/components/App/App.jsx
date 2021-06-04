@@ -13,7 +13,7 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-//import AboutPage from '../AboutPage/AboutPage';
+import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import AddNewClient from '../AddNewClient/AddNewClient';
 import LandingPage from '../LandingPage/LandingPage';
@@ -23,6 +23,7 @@ import Profile from '../Profile/Profile';
 import AddNewAppt from '../AddNewAppt/AddNewAppt';
 import ApptNotes from '../ApptNotes/ApptNotes';
 import ApptDetails from '../ApptDetails/ApptDetails';
+import CBoR from '../StaticFiles/CBoR';
 
 import './App.css';
 
@@ -49,13 +50,21 @@ function App() {
           <Redirect exact from="/" to="/home" />
 
           {/* Visiting localhost:3000/about will show the about page. */}
-          {/* <Route
+          <Route
             // shows AboutPage at all times (logged in or not)
             exact
             path="/about"
           >
             <AboutPage />
-          </Route> */}
+          </Route>
+
+          <Route
+            // link shows if logged in, doesn't if not. Someone not logged in could only acces with precise url
+            exact
+            path="/CBoR"
+          >
+            <CBoR />
+          </Route>
 
           {/* add <Route> "/CBoR create and import component in file use <embed element </Route> for client bill of rights, health history, aftercare */}
 

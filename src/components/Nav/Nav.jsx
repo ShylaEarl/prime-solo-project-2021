@@ -21,6 +21,11 @@ function Nav() {
 
   return (
     <nav>
+      <Link className="navLink" to="/about">
+          About
+      </Link>
+      <br />
+      <br />
       <Link className="navLink" to='/home'>
         Home
       </Link>
@@ -40,7 +45,7 @@ function Nav() {
             </Link>
             <br/>
             <br/>
-            <Link className="navLink" to=" ">
+            <Link className="navLink" to="/CBoR">
               Client Bill of Rights
             </Link>
             <br/>
@@ -50,7 +55,7 @@ function Nav() {
             </Link>
             <br/>
             <br/>
-            <Link className="navLink" to="client-bill-of-rights.pdf">
+            <Link className="navLink" to=" ">
               Aftercare Instruction Sheet
             </Link>
             <br/>
@@ -64,11 +69,6 @@ function Nav() {
             </button>
           </>
         )}
-
-        {/* <Link className="navLink" to="/about">
-          About
-        </Link> */}
-        {/* about page is for anyone to see, they do not need to be logged in */}
       </div>
     </nav>
   );

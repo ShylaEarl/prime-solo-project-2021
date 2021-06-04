@@ -5,6 +5,7 @@ import client from './client.reducer';
 import clientInfo from './clientInfo.reducer';
 import appt from './appt.reducer';
 import apptInfo from './apptInfo.reducer';
+import remedies from './remedies.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   clientInfo,
   appt,
   apptInfo,
+  remedies,
 });
 
 export default rootReducer;
