@@ -1,5 +1,7 @@
 //stores one specific client's details returned from DB based on id
 const clientInfoReducer = (state = {}, action) => {
+    console.log('XXXXXXXX', action);
+    
     switch (action.type) {
       case 'SET_CLIENT_INFO':
         return action.payload;

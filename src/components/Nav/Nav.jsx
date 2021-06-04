@@ -50,7 +50,7 @@ function Nav() {
             </Link>
             <br/>
             <br/>
-            <Link className="navLink" to=" ">
+            <Link className="navLink" to="client-bill-of-rights.pdf">
               Aftercare Instruction Sheet
             </Link>
             <br/>

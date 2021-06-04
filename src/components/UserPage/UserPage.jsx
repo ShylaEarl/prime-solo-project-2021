@@ -22,7 +22,7 @@ function UserPage() {
   
   //axios get (or useEffect dispatch to saga) to retrieve all clients from DB
   useEffect(() => {
-    dispatch({ type: 'FETCH_CLIENT' }); 
+    dispatch({ type: 'FETCH_CLIENT_LIST' }); 
     //dispatch({ type: 'FETCH_LAST_APPT' }); //eventually this saga dispatch will access reducer holding last appt for each client
   }, []);
 
@@ -34,7 +34,7 @@ function UserPage() {
     .then((response) => {
       console.log('delete request', response);
       //get call replaced by useEffect to update client table
-      dispatch({ type: 'FETCH_CLIENT' }); 
+      dispatch({ type: 'FETCH_CLIENT_LIST' }); 
     })
     .catch((error) => {
       console.log('error in DELETE', error);
@@ -64,7 +64,7 @@ function UserPage() {
   //edit function on click, capture client id, send specific client info to client info reducer and route to profile page
   const routeToEdit = (event, item) => {
     console.log('edit clicked! client =', item);
-    dispatch({ type: 'SET_CLIENT_INFO', payload: item})
+    //dispatch({type: 'SET_CLIENT_INFO', payload: item})
     history.push(`/Profile/${item.id}`); //${id} to useParams? item.id uses client's id from their row
   }
 

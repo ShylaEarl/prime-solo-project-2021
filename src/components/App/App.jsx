@@ -57,6 +57,8 @@ function App() {
             <AboutPage />
           </Route> */}
 
+          {/* add <Route> "/CBoR create and import component in file use <embed element </Route> for client bill of rights, health history, aftercare */}
+
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).

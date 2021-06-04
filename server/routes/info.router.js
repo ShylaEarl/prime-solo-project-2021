@@ -26,6 +26,23 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 });//end client GET route
 
+//copy this get request but add '/:id' w/ query SELECT * FROM "client" WHERE id=$1 req.params.id
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('in one client info get, id:', req.params.id);
+  
+  //returns all client info to reducer
+  const query = `SELECT * FROM "client" WHERE id=$1;`;
+  pool.query(query, [req.params.id])
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(error => {
+    console.log('Error client GET', error);
+    res.sendStatus(500)
+  })
+
+});//end one client info GET route
+
 //SELECT * FROM "appointment" WHERE client_id = $1;
 
 // //get a specific client's appointment info from the server/DB (for profile page/appt details page)
