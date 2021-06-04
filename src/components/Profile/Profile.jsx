@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 //import axios from 'axios';
 
 function Profile(){ 
+
+    const element = <FontAwesomeIcon icon={faStar} /> 
 
     let {id} = useParams();
     console.log(id);
@@ -14,10 +18,6 @@ function Profile(){
 
     //local state for conditional rendering by date for appts
     const [currentDate, setCurrentDate] = useState(new Date());
-    console.log('current date as state:', currentDate);
-    console.log(currentDate.getMonth() + 1, currentDate.getDate(), currentDate.getYear());
-    console.log('current date w/ moment:', moment(currentDate).format('L'));
-    <p>{currentDate.getMonth() + 1}/{currentDate.getDate()}</p>
 
     //create and set local state for input updates
     const [full_name, setFullName] = useState('');
@@ -44,7 +44,8 @@ function Profile(){
   
     //on page load, retrieve this client's appts from server/DB
     useEffect(() => {
-        dispatch({ type: 'FETCH_APPT', payload: clientInfo.id  }); // clientInfo.id change to id for params
+        dispatch({ type: 'FETCH_APPT', payload: id  }); // clientInfo.id change to id for params
+        dispatch({ type: 'FETCH_CLIENT', payload: id});
     }, []);
 
     //PUT route to update client information
@@ -192,18 +193,16 @@ function Profile(){
             <div className="card-half-right">
                 {/* {JSON.stringify(appt)} */}
                 <h3>Appointment History</h3>
-                {/* font awesome leaf icon for li - still need to install */}
-                {/* <i class="fab fa-pagelines"></i> */}
                 <ul>
                     {appt.map((item, i) => {
                         if(moment(currentDate).format('L') == moment(item.date).format('L')){ //today's date
                             return <li key={i} className="li_asLink" 
                             onClick={(event) => routeToApptNotes(event, item)}>
-                            {moment(item.date).format('L')} {item.appt_name}</li>
+                            {element} {moment(item.date).format('L')} {item.appt_name}</li>
                         } else { //past appointment
                             return <li key={i} className="li_asLink" 
                             onClick={(event) => routeToApptDetails(event, item)}>
-                            {moment(item.date).format('L')} {item.appt_name}</li>
+                            {element} {moment(item.date).format('L')} {item.appt_name}</li>
                         }
                     })}
                 </ul>

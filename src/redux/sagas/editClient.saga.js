@@ -7,8 +7,7 @@ function* updateClient(action) {
     console.log('in edit saga', action.payload);
     try{
         yield axios.put( `/api/info/Profile/${action.payload.id}`, action.payload );
-        yield put({type: 'FETCH_CLIENT'}); 
-        //yield put({ type: 'SET_CLIENT_INFO', payload: action.payload}); //checkout react router assingment to figure out how to catch info for specific client (video @ 50min)
+        yield put({type: 'FETCH_CLIENT', payload: action.payload.id }); //call new saga that is fetching single client (still need to make) with action.payload.id
     } catch (error) {
         alert(`Sorry things aren't working at the moment. Please try again later.`);
         console.log('Error updating client info', error);

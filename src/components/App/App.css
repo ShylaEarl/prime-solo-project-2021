@@ -168,8 +168,10 @@ Buttons & Links
 }
 
 .li_asLink {
-  border-bottom: 1px solid #5E3D18;
+  /* border-bottom: 1px solid #5E3D18; */
   color: #5E3D18;
+  padding: .25rem;
+  font-size: large;
   
 }
 
