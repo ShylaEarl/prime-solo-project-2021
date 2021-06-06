@@ -74,13 +74,13 @@
         - [x] add 'Submit' button on this view
             - [x] add functionality 
             - [x] add PUT route
-            - [] when 'Submit' clicked, renders to client profile view with updated information and 'Update Info' button (useParams?)
+            - [x] when 'Submit' clicked, renders to client profile view with updated information and 'Update Info' button (useParams)
 - [x] add 'Add Appointment' button
     - [x] add functionality by routing to add appt page
 - [x] dynamically display client appointment history on DOM
-    - [] add links and icons to rows if date is current/past
-    - [] route to Appointment Notes page 1.6 if current
-    - [] route to Appointment Details page 1.7 if past date
+    - [x] add links and icons to rows if date is current/past
+    - [x] route to Appointment Notes page 1.6 if current
+    - [x] route to Appointment Details page 1.7 if past date
 
 ### Add New Appointment 1.5 
 - [x] create clientInfo store to access specific client's info to add appt to
@@ -99,3 +99,4 @@
 - [] POST route for creating remedies in remedy table
 
 ### Appointment Details Page 1.7 
+- [x] GET route to get appt specific remedies

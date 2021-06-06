@@ -73,9 +73,6 @@ function Profile(){
             icon: "success"
         });
 
-        //can I dispatch here to get client's updated data?
-        // dispatch({ type: 'FETCH_UPDATED_CLIENT_INFO', payload: clientInfo.id });
-
         //editMode off
         setupdateClicked(false);
         console.log('update', updateClicked);
@@ -87,7 +84,6 @@ function Profile(){
         console.log('update', updateClicked);
 
         //set local state with client info from the clientInfo reducer
-        //change to id to use params instead of reducer?
         setFullName(clientInfo.full_name);
         setAddress(clientInfo.address);
         setCity(clientInfo.city);
@@ -111,20 +107,13 @@ function Profile(){
     //PAST on click, capture appt id, send specific appt info to appt info reducer and route to appt details page
     const routeToApptDetails = (event, item) => {
         console.log('appt details clicked!', item); //specific appt's id and information
-        dispatch({ type: 'SET_APPT_INFO', payload: item }); //currently attempting to use temp apptInfo reduce. Eventually use params get that specific appts details from DB/server
-        history.push(`/ApptDetails/${item.id}`); //this id is the appointment's id being passed in from the row/item.id appt reducer. How do you switch it to be params?
+        dispatch({ type: 'SET_APPT_INFO', payload: item }); 
+        history.push(`/ApptDetails/${item.id}`); 
     }
-
-    //on click, capture client id, send specific client info to client info reducer and route to add appt page
-    // const routeToAddConsult = (event, item) => {
-    //     console.log('add clicked! client =', item);
-    //     dispatch({ type: 'SET_CLIENT_INFO', payload: item})
-    //     history.push(`/AddAppt/${item.id}`); //${item.id}
-    // }
 
     //PRESENT
     const routeToApptNotes = (event, item) => {
-        dispatch({ type: 'SET_APPT_INFO', payload: item }); //currently attempting to use temp apptInfo reduce. Eventually use params get that specific appts details from DB/server
+        dispatch({ type: 'SET_APPT_INFO', payload: item });
         history.push(`/ApptNotes/${item.id}`); //specific appt's id to add notes to
     }
 
@@ -139,7 +128,7 @@ function Profile(){
     }//end goBack
 
     return(
-        <div className="card-whole">
+        <div className="card-whole"> 
             {updateClicked ? 
             <div className="input-form"> 
             {/* className="card-half-left-inputs" */}
@@ -176,7 +165,6 @@ function Profile(){
             </div> 
             :
             <div className="card-half-left"> 
-            {/* change these to id rather than clientInfo to use params?  */}
                 <h2>{clientInfo.full_name}</h2>
                 <p>{clientInfo.address}</p>
                 <p>{clientInfo.city}, {clientInfo.state}, {clientInfo.zip_code}</p>
@@ -191,19 +179,18 @@ function Profile(){
             
             {/* specific client's appointment history list */}
             <div className="card-half-right">
-                {/* {JSON.stringify(appt)} */}
-                <h3>Appointment History</h3>
+                <h2>Appointment History</h2>
                 <ul>
                     {appt.map((item, i) => {
                         if(moment(currentDate).format('L') == moment(item.date).format('L')){ //today's date
                             return <li key={i} className="li_asLink" 
                             onClick={(event) => routeToApptNotes(event, item)}>
-                            {element} {moment(item.date).format('L')} {item.appt_name}</li>
+                            &#9651; {moment(item.date).format('L')} {item.appt_name}</li>
                         } else { //past appointment
                             return <li key={i} className="li_asLink" 
                             onClick={(event) => routeToApptDetails(event, item)}>
-                            {element} {moment(item.date).format('L')} {item.appt_name}</li>
-                        }
+                            &#9651; {moment(item.date).format('L')} {item.appt_name}</li>
+                        } //add future appt condition here
                     })}
                 </ul>
                 {/* if(currentDate == item.date) Present day route to notes
@@ -215,16 +202,3 @@ function Profile(){
 }
 
 export default Profile;
-
-{/* <ul>
-    {appt.map((item, i) => 
-        //if (currentDate == item.date) (today's appoitnment) show <li key={i} className="li_asLink" onClick={() => apptNotes(item.id)}>{moment(item.date).format('L')} {item.appt_name}</li>
-        //else if (currentDate > item.date) (appt already happened) show this <li key={i} className="li_asLink" onClick={() => routeToApptDetails(item.id)}>{moment(item.date).format('L')} {item.appt_name}</li>
-        //else (currentdate < item.date) (appt is in future) show this <li key={i} className="li_asLink" onClick={() => apptEdit(item.id)}>{moment(item.date).format('L')} {item.appt_name}</li>
-        <li key={i} className="li_asLink"
-            onClick={(event) => routeToApptNotes(event, item)}
-        >
-        {moment(item.date).format('L')} {item.appt_name}
-        </li>
-    )}
-</ul> */}

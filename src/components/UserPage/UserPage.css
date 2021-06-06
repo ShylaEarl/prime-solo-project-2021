@@ -1,6 +1,7 @@
 table {
     background-color: white;
-    border: 1px solid hotpink;
+    border: 2px solid #EBCF5B;
+    /* border: 1px solid hotpink; */
     border-collapse: collapse;
     margin: auto;
     margin-top: 10px;
@@ -8,12 +9,14 @@ table {
 }
 
 table th{
-    border: 1px solid hotpink;
+    border: 2px solid #EBCF5B;
+    /* border: 1px solid hotpink; */
     background-color: #efefef;
 }
 
 table td{
-    border: 1px solid hotpink;
+    border: 2px solid #EBCF5B;
+    /* border: 1px solid hotpink; */
     text-align: center;
     padding: 1rem
 }

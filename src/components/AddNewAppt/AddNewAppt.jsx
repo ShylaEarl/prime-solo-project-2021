@@ -39,13 +39,13 @@ function AddNewAppt(){
               }
             })
         } else {
-            axios.post(`/api/info/AddAppt/${clientInfo.id}`, //change to id once activated params
+            axios.post(`/api/info/AddAppt/${clientInfo.id}`, 
             {
                 appt_name: appt_name,
                 date: date,
                 time: time,
                 primary_concern: primary_concern,
-                client_id: clientInfo.id, //change to id once activated params
+                client_id: clientInfo.id, 
             }
             ).then((response) => {
                 console.log('back from new appt POST', response.data);
@@ -70,10 +70,8 @@ function AddNewAppt(){
     return(
         <div className="card-whole">
             <form className="input-form" onSubmit={addNewAppt}>
-                {/* {JSON.stringify(clientInfo)} */}
                 <h3>Adding New Consultation For:</h3>
                 <h2>{clientInfo.full_name}</h2>
-                {/* //change to id once activated params */}
                 <br />
                 <input type="text"
                     placeholder="Consultation Name" 

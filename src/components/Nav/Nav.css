@@ -2,47 +2,30 @@
   color: #5E3D18;
   text-shadow: .75px .75px hotpink;
   font-size: 20px;
-  /* padding: 25px;
-  margin: 5rem; */
+  text-decoration: none;
 }
 
 .navLink:hover {
-  /* background-color: #008183; */
-  border-color: ivory;
-  color: ivory;
+  color: #F7903D;
   text-shadow: .75px .75px hotpink;
 }
 
-.logout-btn {
-  background-color: ivory;
-  border-radius: 5px;
-  padding: .5rem;
+.logout_btn_asLink {
+  padding: 0;
+  border-width: 0;
+  border-radius: 0;
+  background: none;
+  text-transform: uppercase;
+  color: #5E3D18;
+  text-shadow: .75px .75px hotpink;
+  font-size: 20px;
 }
 
-.logout-btn:hover {
-  background-color: #5E3D18;
-  color: ivory;
+.logout_btn_asLink:hover {
+  background-color: transparent;
+  color: #F7903D;
+  text-shadow: .75px .75px hotpink;
 }
-
-/* .nav {
-  /* flex box layout */
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin: 0 0 30px;
-  background-color: #00acb0;
-  overflow: hidden; */
-/* }  */
-
-/* from .navLink */
-/* display: inline-block;
-  color: #f2f2f2;
-  background-color: #00acb0;
-  text-align: center;
-  padding: 24px 10px;
-  text-decoration: none;
-  font-size: 15px; */
 
   /* these last two make the logout button in
   the nav bar look like another link */

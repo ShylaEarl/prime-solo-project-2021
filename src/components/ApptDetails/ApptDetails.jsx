@@ -55,6 +55,7 @@ function ApptDetails(){
                     </li>
                 )}
             </ul>
+            <br />
             <button className="a2o-btn" onClick={goBack}>Back to {clientInfo.full_name}'s Profile</button>
         </div>
     );
