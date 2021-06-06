@@ -32,6 +32,10 @@ ul {
   list-style-type: none;
 }
 
+li{
+  padding: .25rem;
+}
+
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
@@ -61,7 +65,8 @@ Container
 }
 
 header {
-  background-color: #EBCF5B;
+  /* background-color: ivory; */
+  background-color: #EBCF5B; 
   grid-area: header;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
@@ -73,14 +78,22 @@ header {
 }
 
 main {
-  background-color: antiquewhite;
+  background-image: url(https://i.pinimg.com/originals/6d/fd/7c/6dfd7c8fa5ba6c2becb7cfa7b28171f4.jpg);
+  /* background-repeat: no-repeat; */
+  /* background-attachment: fixed;
+  background-size: cover;  */
+  /* background-color: ivory; */
+  /* background-color: antiquewhite; */
   grid-area: main;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
 }
 
 nav {
-  background-color: #F7903D;
+  padding: 1rem;
+  /* background-color: #f6f3f0; */
+  background-color: ivory;
+  /* background-color: #F7903D; orange*/
   grid-area: nav;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
@@ -135,6 +148,9 @@ nav {
 /* --------------------------------------------------------------------------------
 Buttons & Links
 -------------------------------------------------------------------------------- */
+/* .swal-button {
+  background-color: #EBCF5B;
+} */
 
 .a2o-btn {
   background-color: #EBCF5B;
@@ -176,9 +192,8 @@ Buttons & Links
 }
 
 .li_asLink:hover {
-  border-color: #F7903D;
   color: #F7903D;
-  text-shadow: .25px .25px #5E3D18;
+  text-shadow: .25px .25px hotpink;
 }
 
 /* --------------------------------------------------------------------------------
@@ -201,7 +216,8 @@ Alert
 Form Treatment
 -------------------------------------------------------------------------------- */
 .input-form {
-  border: 1px solid hotpink;
+  border: 2px solid #EBCF5B;
+  /* border: 1px solid hotpink; */
   background-color: #efefef;
   margin-bottom: 1.5rem;
   padding: 1.5rem;
@@ -221,6 +237,13 @@ input {
   padding: .5rem;
   margin: 5px;
   margin-bottom: 10px;
+  border: none;
+  border-bottom: 2px solid #5E3D18;
+  outline: none;
+}
+
+textarea {
+  border: 2px solid #EBCF5B;
 }
 
 .card-whole {
@@ -228,11 +251,25 @@ input {
   width: 50%;
   height: 75%;
   margin: auto;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 2px 4px lightgrey;
+  box-shadow: 0 2px 4px black;
+  /* box-shadow: 0 2px 4px lightgrey; */
   /* text-align: left; */
+}
+
+.card-whole-left-align {
+  background-color: ivory;
+  width: 35%;
+  height: 75%;
+  margin: auto;
+  margin-top: 1.5rem;
+  padding-left: 12rem;
+  padding-top: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px black;
+  text-align: left;
 }
 
 .card-whole h2 {
@@ -241,9 +278,9 @@ input {
 }
 
 .card-half-left {
-  background-color: antiquewhite;
+  background-color: #efece6;
   border-radius: 10px;
-  box-shadow: 0 2px 4px lightgrey;
+  box-shadow: 0 2px 4px black;
   padding: 1rem;
   margin: 1rem;
   /* display: inline-block; */
@@ -252,30 +289,29 @@ input {
 .card-half-right {
   width:auto;
   height:auto;
-  background-color: antiquewhite;
+  background-color: #efece6;
   border-radius: 10px;
-  box-shadow: 0 2px 4px lightgrey;
+  box-shadow: 0 2px 4px black;
   padding: 1rem;
   margin: 1rem;
-  /* display: inline-block; */
 }
 
-.card-third-left {
+/* .card-third-left {
   width:auto;
   height:auto;
   background-color: ivory;
   border-radius: 10px;
   box-shadow: 0 2px 4px lightgrey;
-}
+} */
 
-.card-third-center {
+/* .card-third-center {
+  background-color: ivory;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px black;
+} */
+
+/* .card-third-right {
   background-color: ivory;
   border-radius: 10px;
   box-shadow: 0 2px 4px lightgrey;
-}
-
-.card-third-right {
-  background-color: ivory;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px lightgrey;
-}
+} */

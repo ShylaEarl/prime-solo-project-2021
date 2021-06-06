@@ -62,7 +62,7 @@ function Nav() {
             {/* <LogOutButton /> */}
             <br/>
             <button
-              className="logout-btn"
+              className="logout_btn_asLink"
               onClick={() => dispatch({ type: 'LOGOUT' })}
             >
               Log Out
