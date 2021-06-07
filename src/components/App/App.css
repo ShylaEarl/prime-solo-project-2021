@@ -34,6 +34,7 @@ ul {
 
 li{
   padding: .25rem;
+  font-size: 20px;
 }
 
 /* --------------------------------------------------------------------------------
@@ -90,13 +91,15 @@ main {
 }
 
 nav {
-  padding: 1rem;
+  padding-left: 4rem;
+  padding-right: 2rem;
   /* background-color: #f6f3f0; */
   background-color: ivory;
   /* background-color: #F7903D; orange*/
   grid-area: nav;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
+  text-align: left;
 }
 
 /* #content1 {
@@ -244,6 +247,19 @@ input {
 
 textarea {
   border: 2px solid #EBCF5B;
+}
+
+.card-login {
+  background-color: ivory;
+  width: 50%;
+  height: 75%;
+  margin: auto;
+  margin-top: 7.5rem;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px black;
+  /* box-shadow: 0 2px 4px lightgrey; */
+  /* text-align: left; */
 }
 
 .card-whole {

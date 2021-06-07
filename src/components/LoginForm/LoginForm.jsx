@@ -25,7 +25,7 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="card-whole" onSubmit={login}>
+    <form className="card-login" onSubmit={login}>
       <h2>Login</h2>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
