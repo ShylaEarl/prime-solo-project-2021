@@ -21,19 +21,21 @@ function Nav() {
 
   return (
     <nav>
+      <br/>
+      <br/>
       <Link className="navLink" to="/about">
-          About
+        &#9651; About
       </Link>
-      <br />
-      <br />
+      <br/>
+      <br/>
       <Link className="navLink" to='/home'>
-        Home
+        &#9651; Home
       </Link>
       <br/>
       <br/>
       <div>
         <Link className="navLink" to={loginLinkData.path}>
-          {loginLinkData.text}
+          &#9651; {loginLinkData.text}
         </Link>
         <br/>
         <br/>
@@ -41,22 +43,27 @@ function Nav() {
         {user.id && (
           <>
             <Link className="navLink" to="/info">
-              Add New Client
+              &#9651; Add New Client
             </Link>
             <br/>
             <br/>
             <Link className="navLink" to="/CBoR">
-              Client Bill of Rights
+              &#9651; Client Bill of Rights
             </Link>
             <br/>
             <br/>
             <Link className="navLink" to=" ">
-              Health History Form
+              &#9651; Health History Form
             </Link>
             <br/>
             <br/>
             <Link className="navLink" to=" ">
-              Aftercare Instruction Sheet
+              &#9651; Aftercare Instruction Sheet
+            </Link>
+            <br/>
+            <br/>
+            <Link className="navLink" to=" ">
+              &#9651; Email
             </Link>
             <br/>
             {/* <LogOutButton /> */}
@@ -65,7 +72,7 @@ function Nav() {
               className="logout_btn_asLink"
               onClick={() => dispatch({ type: 'LOGOUT' })}
             >
-              Log Out
+              &#9651; Log Out
             </button>
           </>
         )}
