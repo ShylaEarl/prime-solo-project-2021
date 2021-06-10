@@ -3,7 +3,7 @@ const apptInfoReducer = (state = {}, action) => {
     switch (action.type) {
       case 'SET_APPT_INFO':
         return action.payload;
-    //   case 'CLEAR_CLIENT':
+    //   case 'CLEAR_APPT_INFO':
     //     return [] or action.payload;
       default:
         return state;
